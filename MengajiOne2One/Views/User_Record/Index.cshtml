@@ -4,57 +4,65 @@
     ViewBag.Title = "Index";
 }
 
+@if (Session["UserID"] == null)
+{
+    <script>
+        window.location = "../Login/Index"
+    </script>
+}
+
 <h2>Senarai Pengguna</h2>
 
 <p>
     @Html.ActionLink("Tambah Pengguna", "Create")
 </p>
 <div class=" table-responsive">
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.u_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.u_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.u_contactNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.u_email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User_Type.t_desc)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.u_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u_contactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Type.t_desc)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.u_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.u_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.u_contactNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.u_email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User_Type.t_desc)
-        </td>
-        <td>
-            @Html.ActionLink("Kemaskini", "Edit", new { id=item.u_id }) |
-            @Html.ActionLink("Butiran", "Details", new { id=item.u_id }) |
-            @Html.ActionLink("Padam", "Delete", new { id=item.u_id })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_contactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Type.t_desc)
+                </td>
+                <td>
+                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.u_id }) |
+                    @Html.ActionLink("Butiran", "Details", new { id = item.u_id }) |
+                    @Html.ActionLink("Padam", "Delete", new { id = item.u_id })
+                </td>
+            </tr>
 
-}
+        }
 
-</table>
-    </div>
+    </table>
+</div>

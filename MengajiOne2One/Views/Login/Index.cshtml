@@ -1,11 +1,5 @@
 ﻿@model MengajiOne2One.Models.User_Record
 
-@{
-    ViewBag.Title = "Log Masuk";
-}
-
-<h2>Log Masuk</h2>
-
 
 @using (Html.BeginForm())
 {
@@ -27,7 +21,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1" } })
                 @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
-                <input type="checkbox" onclick="myFunction1()">  Show Password
+                <input type="checkbox" onclick="myFunction1()">  Lihat Kata Laluan
             </div>
         </div>
 
@@ -52,7 +46,9 @@
         </div>
     </div>
 }
-
+<div>
+    @Html.ActionLink("Kembali", "Index", "StartPage")
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery.validate.min.js")

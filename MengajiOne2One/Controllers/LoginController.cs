@@ -30,6 +30,7 @@ namespace MengajiOne2One.Controllers
                         
                         Session["UserID"] = obj.u_id.ToString();
                         Session["Username"] = obj.u_name.ToString();
+                        Session["Usertype"] = obj.u_type.ToString();
                         return RedirectToAction("Index", "Home");
 
                     }
