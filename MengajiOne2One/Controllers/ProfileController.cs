@@ -17,7 +17,7 @@ namespace MengajiOne2One.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            var user_Records = db.User_Records.Include(u => u.User_Type);
+            var user_Records = db.User_Record.Include(u => u.User_Type);
             return View(user_Records.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Record user_Record = db.User_Records.Find(id);
+            User_Record user_Record = db.User_Record.Find(id);
             if (user_Record == null)
             {
                 return HttpNotFound();
@@ -45,7 +45,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Record user_Record = db.User_Records.Find(id);
+            User_Record user_Record = db.User_Record.Find(id);
             if (user_Record == null)
             {
                 return HttpNotFound();
