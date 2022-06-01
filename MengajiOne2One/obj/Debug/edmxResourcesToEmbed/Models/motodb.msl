@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="motodbModelStoreContainer" CdmEntityContainer="motodbEntities">
+    <EntitySetMapping Name="Class_Records">
+      <EntityTypeMapping TypeName="motodbModel.Class_Record">
+        <MappingFragment StoreEntitySet="Class Record">
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_date" ColumnName="c_date" />
+          <ScalarProperty Name="c_studentID" ColumnName="c_studentID" />
+          <ScalarProperty Name="c_duration" ColumnName="c_duration" />
+          <ScalarProperty Name="c_teacherID" ColumnName="c_teacherID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salary_Records">
+      <EntityTypeMapping TypeName="motodbModel.Salary_Record">
+        <MappingFragment StoreEntitySet="Salary Record">
+          <ScalarProperty Name="sal_ID" ColumnName="sal_ID" />
+          <ScalarProperty Name="sal_amount" ColumnName="sal_amount" />
+          <ScalarProperty Name="sal_date" ColumnName="sal_date" />
+          <ScalarProperty Name="sal_teacherID" ColumnName="sal_teacherID" />
+          <ScalarProperty Name="sal_month" ColumnName="sal_month" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Performance_Records">
+      <EntityTypeMapping TypeName="motodbModel.Student_Performance_Record">
+        <MappingFragment StoreEntitySet="Student Performance Record">
+          <ScalarProperty Name="per_ID" ColumnName="per_ID" />
+          <ScalarProperty Name="per_desc" ColumnName="per_desc" />
+          <ScalarProperty Name="per_date" ColumnName="per_date" />
+          <ScalarProperty Name="per_studentID" ColumnName="per_studentID" />
+          <ScalarProperty Name="per_month" ColumnName="per_month" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Records">
+      <EntityTypeMapping TypeName="motodbModel.Student_Record">
+        <MappingFragment StoreEntitySet="Student Record">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="s_pwd" ColumnName="s_pwd" />
+          <ScalarProperty Name="s_name" ColumnName="s_name" />
+          <ScalarProperty Name="s_age" ColumnName="s_age" />
+          <ScalarProperty Name="s_address" ColumnName="s_address" />
+          <ScalarProperty Name="s_contactNo" ColumnName="s_contactNo" />
+          <ScalarProperty Name="s_regDate" ColumnName="s_regDate" />
+          <ScalarProperty Name="s_teacherID" ColumnName="s_teacherID" />
+          <ScalarProperty Name="s_package" ColumnName="s_package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Records">
+      <EntityTypeMapping TypeName="motodbModel.User_Record">
+        <MappingFragment StoreEntitySet="User Record">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="u_pwd" ColumnName="u_pwd" />
+          <ScalarProperty Name="u_type" ColumnName="u_type" />
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="u_contactNo" ColumnName="u_contactNo" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Types">
+      <EntityTypeMapping TypeName="motodbModel.User_Type">
+        <MappingFragment StoreEntitySet="User Type">
+          <ScalarProperty Name="t_ID" ColumnName="t_ID" />
+          <ScalarProperty Name="t_desc" ColumnName="t_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

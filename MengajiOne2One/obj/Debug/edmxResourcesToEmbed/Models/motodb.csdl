@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="motodbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class_Record">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="c_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_duration" Type="Int32" Nullable="false" />
+    <Property Name="c_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Student_Record" Relationship="Self.FK_Class_Record_Student_Record" FromRole="Class_Record" ToRole="Student_Record" />
+    <NavigationProperty Name="User_Record" Relationship="Self.FK_Class_Record_User_Record2" FromRole="Class_Record" ToRole="User_Record" />
+  </EntityType>
+  <EntityType Name="Salary_Record">
+    <Key>
+      <PropertyRef Name="sal_ID" />
+    </Key>
+    <Property Name="sal_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sal_amount" Type="Double" />
+    <Property Name="sal_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="sal_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sal_month" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="User_Record" Relationship="Self.FK_Salary_Record_User_Record" FromRole="Salary_Record" ToRole="User_Record" />
+  </EntityType>
+  <EntityType Name="Student_Performance_Record">
+    <Key>
+      <PropertyRef Name="per_ID" />
+    </Key>
+    <Property Name="per_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="per_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="per_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="per_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="per_month" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Student_Record" Relationship="Self.FK_Student_Performance_Record_Student_Record" FromRole="Student_Performance_Record" ToRole="Student_Record" />
+  </EntityType>
+  <EntityType Name="Student_Record">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="s_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="s_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="s_age" Type="Int32" />
+    <Property Name="s_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="s_contactNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="s_regDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="s_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="s_package" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class_Record" Relationship="Self.FK_Class_Record_Student_Record" FromRole="Student_Record" ToRole="Class_Record" />
+    <NavigationProperty Name="Student_Performance_Record" Relationship="Self.FK_Student_Performance_Record_Student_Record" FromRole="Student_Record" ToRole="Student_Performance_Record" />
+    <NavigationProperty Name="User_Record" Relationship="Self.FK_Student_Record_User_Record" FromRole="Student_Record" ToRole="User_Record" />
+  </EntityType>
+  <EntityType Name="User_Record">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_type" Type="Int32" Nullable="false" />
+    <Property Name="u_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_contactNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="u_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class_Record" Relationship="Self.FK_Class_Record_User_Record2" FromRole="User_Record" ToRole="Class_Record" />
+    <NavigationProperty Name="Salary_Record" Relationship="Self.FK_Salary_Record_User_Record" FromRole="User_Record" ToRole="Salary_Record" />
+    <NavigationProperty Name="Student_Record" Relationship="Self.FK_Student_Record_User_Record" FromRole="User_Record" ToRole="Student_Record" />
+    <NavigationProperty Name="User_Type" Relationship="Self.FK_User_Record_User_Type" FromRole="User_Record" ToRole="User_Type" />
+  </EntityType>
+  <EntityType Name="User_Type">
+    <Key>
+      <PropertyRef Name="t_ID" />
+    </Key>
+    <Property Name="t_ID" Type="Int32" Nullable="false" />
+    <Property Name="t_desc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User_Record" Relationship="Self.FK_User_Record_User_Type" FromRole="User_Type" ToRole="User_Record" />
+  </EntityType>
+  <Association Name="FK_Class_Record_Student_Record">
+    <End Role="Student_Record" Type="Self.Student_Record" Multiplicity="1" />
+    <End Role="Class_Record" Type="Self.Class_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Record">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="Class_Record">
+        <PropertyRef Name="c_studentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Record_User_Record2">
+    <End Role="User_Record" Type="Self.User_Record" Multiplicity="1" />
+    <End Role="Class_Record" Type="Self.Class_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Record">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Class_Record">
+        <PropertyRef Name="c_teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salary_Record_User_Record">
+    <End Role="User_Record" Type="Self.User_Record" Multiplicity="1" />
+    <End Role="Salary_Record" Type="Self.Salary_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Record">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Salary_Record">
+        <PropertyRef Name="sal_teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Performance_Record_Student_Record">
+    <End Role="Student_Record" Type="Self.Student_Record" Multiplicity="1" />
+    <End Role="Student_Performance_Record" Type="Self.Student_Performance_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Record">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="Student_Performance_Record">
+        <PropertyRef Name="per_studentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Record_User_Record">
+    <End Role="User_Record" Type="Self.User_Record" Multiplicity="0..1" />
+    <End Role="Student_Record" Type="Self.Student_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Record">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Student_Record">
+        <PropertyRef Name="s_teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Record_User_Type">
+    <End Role="User_Type" Type="Self.User_Type" Multiplicity="1" />
+    <End Role="User_Record" Type="Self.User_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Type">
+        <PropertyRef Name="t_ID" />
+      </Principal>
+      <Dependent Role="User_Record">
+        <PropertyRef Name="u_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="motodbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Class_Records" EntityType="Self.Class_Record" />
+    <EntitySet Name="Salary_Records" EntityType="Self.Salary_Record" />
+    <EntitySet Name="Student_Performance_Records" EntityType="Self.Student_Performance_Record" />
+    <EntitySet Name="Student_Records" EntityType="Self.Student_Record" />
+    <EntitySet Name="User_Records" EntityType="Self.User_Record" />
+    <EntitySet Name="User_Types" EntityType="Self.User_Type" />
+    <AssociationSet Name="FK_Class_Record_Student_Record" Association="Self.FK_Class_Record_Student_Record">
+      <End Role="Student_Record" EntitySet="Student_Records" />
+      <End Role="Class_Record" EntitySet="Class_Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Record_User_Record2" Association="Self.FK_Class_Record_User_Record2">
+      <End Role="User_Record" EntitySet="User_Records" />
+      <End Role="Class_Record" EntitySet="Class_Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salary_Record_User_Record" Association="Self.FK_Salary_Record_User_Record">
+      <End Role="User_Record" EntitySet="User_Records" />
+      <End Role="Salary_Record" EntitySet="Salary_Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Performance_Record_Student_Record" Association="Self.FK_Student_Performance_Record_Student_Record">
+      <End Role="Student_Record" EntitySet="Student_Records" />
+      <End Role="Student_Performance_Record" EntitySet="Student_Performance_Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Record_User_Record" Association="Self.FK_Student_Record_User_Record">
+      <End Role="User_Record" EntitySet="User_Records" />
+      <End Role="Student_Record" EntitySet="Student_Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Record_User_Type" Association="Self.FK_User_Record_User_Type">
+      <End Role="User_Type" EntitySet="User_Types" />
+      <End Role="User_Record" EntitySet="User_Records" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="motodbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Class Record">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_date" Type="date" Nullable="false" />
+    <Property Name="c_studentID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="c_duration" Type="int" Nullable="false" />
+    <Property Name="c_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salary Record">
+    <Key>
+      <PropertyRef Name="sal_ID" />
+    </Key>
+    <Property Name="sal_ID" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="sal_amount" Type="float" />
+    <Property Name="sal_date" Type="date" Nullable="false" />
+    <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="sal_month" Type="date" />
+  </EntityType>
+  <EntityType Name="Student Performance Record">
+    <Key>
+      <PropertyRef Name="per_ID" />
+    </Key>
+    <Property Name="per_ID" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="per_desc" Type="varchar(max)" />
+    <Property Name="per_date" Type="date" Nullable="false" />
+    <Property Name="per_studentID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="per_month" Type="date" />
+  </EntityType>
+  <EntityType Name="Student Record">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="s_pwd" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="s_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="s_age" Type="int" />
+    <Property Name="s_address" Type="varchar(max)" />
+    <Property Name="s_contactNo" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="s_regDate" Type="date" Nullable="false" />
+    <Property Name="s_teacherID" Type="varchar" MaxLength="12" />
+    <Property Name="s_package" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User Record">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="u_pwd" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="u_type" Type="int" Nullable="false" />
+    <Property Name="u_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="u_contactNo" Type="varchar" MaxLength="15" />
+    <Property Name="u_email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User Type">
+    <Key>
+      <PropertyRef Name="t_ID" />
+    </Key>
+    <Property Name="t_ID" Type="int" Nullable="false" />
+    <Property Name="t_desc" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Class Record_Student Record">
+    <End Role="Student Record" Type="Self.Student Record" Multiplicity="1" />
+    <End Role="Class Record" Type="Self.Class Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student Record">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="Class Record">
+        <PropertyRef Name="c_studentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class Record_User Record2">
+    <End Role="User Record" Type="Self.User Record" Multiplicity="1" />
+    <End Role="Class Record" Type="Self.Class Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User Record">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Class Record">
+        <PropertyRef Name="c_teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salary Record_User Record">
+    <End Role="User Record" Type="Self.User Record" Multiplicity="1" />
+    <End Role="Salary Record" Type="Self.Salary Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User Record">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Salary Record">
+        <PropertyRef Name="sal_teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student Performance Record_Student Record">
+    <End Role="Student Record" Type="Self.Student Record" Multiplicity="1" />
+    <End Role="Student Performance Record" Type="Self.Student Performance Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student Record">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="Student Performance Record">
+        <PropertyRef Name="per_studentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student Record_User Record">
+    <End Role="User Record" Type="Self.User Record" Multiplicity="0..1" />
+    <End Role="Student Record" Type="Self.Student Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User Record">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Student Record">
+        <PropertyRef Name="s_teacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User Record_User Type">
+    <End Role="User Type" Type="Self.User Type" Multiplicity="1" />
+    <End Role="User Record" Type="Self.User Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User Type">
+        <PropertyRef Name="t_ID" />
+      </Principal>
+      <Dependent Role="User Record">
+        <PropertyRef Name="u_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="motodbModelStoreContainer">
+    <EntitySet Name="Class Record" EntityType="Self.Class Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salary Record" EntityType="Self.Salary Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student Performance Record" EntityType="Self.Student Performance Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student Record" EntityType="Self.Student Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User Record" EntityType="Self.User Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User Type" EntityType="Self.User Type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Class Record_Student Record" Association="Self.FK_Class Record_Student Record">
+      <End Role="Student Record" EntitySet="Student Record" />
+      <End Role="Class Record" EntitySet="Class Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class Record_User Record2" Association="Self.FK_Class Record_User Record2">
+      <End Role="User Record" EntitySet="User Record" />
+      <End Role="Class Record" EntitySet="Class Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salary Record_User Record" Association="Self.FK_Salary Record_User Record">
+      <End Role="User Record" EntitySet="User Record" />
+      <End Role="Salary Record" EntitySet="Salary Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student Performance Record_Student Record" Association="Self.FK_Student Performance Record_Student Record">
+      <End Role="Student Record" EntitySet="Student Record" />
+      <End Role="Student Performance Record" EntitySet="Student Performance Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student Record_User Record" Association="Self.FK_Student Record_User Record">
+      <End Role="User Record" EntitySet="User Record" />
+      <End Role="Student Record" EntitySet="Student Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User Record_User Type" Association="Self.FK_User Record_User Type">
+      <End Role="User Type" EntitySet="User Type" />
+      <End Role="User Record" EntitySet="User Record" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
