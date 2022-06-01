@@ -24,14 +24,16 @@ namespace MengajiOne2One.Controllers
                 using(motodbEntities db = new motodbEntities())
                 {
                     var obj = db.User_Record.Where(a => a.u_id == usermodel.u_id && a.u_pwd == usermodel.u_pwd).FirstOrDefault();
+                   
 
-                    if (obj != null)
+                if (obj != null)
                     {
-                        
-                        Session["UserID"] = obj.u_id.ToString();
+                    var obj1 = db.User_Types.Where(b => b.t_ID == obj.u_type).FirstOrDefault();
+                    Session["UserID"] = obj.u_id.ToString();
                         Session["Username"] = obj.u_name.ToString();
                         Session["Usertype"] = obj.u_type.ToString();
-                        return RedirectToAction("Index", "Home");
+                        Session["User_type"] = obj1.t_desc.ToString();
+                    return RedirectToAction("Index", "Home");
 
                     }
                     else

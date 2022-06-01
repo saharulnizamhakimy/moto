@@ -65,7 +65,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Entry(user_Record).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("Details", new { id = Session["UserID"] });
             }
             ViewBag.u_type = new SelectList(db.User_Types, "t_ID", "t_desc", user_Record.u_type);
             return View(user_Record);

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-@if (Session["UserID"] == null)
+@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
 {
     <script>
         window.location = "../Login/Index"
