@@ -35,7 +35,7 @@ namespace MengajiOne2One.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "ID Pengguna atau kata laluan tidak sah");
+                        ModelState.AddModelError("", "ID Pengguna atau Kata Laluan tidak sah");
                     }
 
                 }
