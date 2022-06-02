@@ -17,7 +17,7 @@ namespace MengajiOne2One.Models
             public string u_id { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
-            [DisplayName("Nama")]
+            [DisplayName("Nama Tutor")]
             public string u_name { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MengajiOne2One.Models.Student_Record>
+
+@{
+    ViewBag.Title = "Senarai Pelajar";
+}
+
+@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
+{
+    <script>
+        window.location = "../Login/Index"
+    </script>
+}
+
+<h2>Senarai Pelajar</h2>
+
+<p>
+    @Html.ActionLink("Tambah Pelajar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.s_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.s_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.s_age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.s_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.s_contactNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.s_regDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.s_package)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_Record.u_name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_contactNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_regDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.s_package)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Record.u_name)
+            </td>
+            <td>
+                @Html.ActionLink("Kemaskini", "Edit", new { id = item.s_id }) |
+                @Html.ActionLink("Butiran", "Details", new { id = item.s_id }) |
+                @Html.ActionLink("Padam", "Delete", new { id = item.s_id })
+            </td>
+        </tr>
+    }
+
+</table>

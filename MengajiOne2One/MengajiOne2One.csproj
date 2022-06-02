@@ -267,6 +267,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
+    <Compile Include="Controllers\Student_RecordController.cs" />
     <Compile Include="Controllers\User_RecordController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -292,6 +293,7 @@
     <Compile Include="Models\Salary_Record.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Student_Performance_Record.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
@@ -2229,6 +2231,11 @@
     <Content Include="Views\Login\_ViewStart.cshtml" />
     <Content Include="Views\StartPage\_ViewStart.cshtml" />
     <Content Include="Views\StartPage\Index.cshtml" />
+    <Content Include="Views\Student_Record\Create.cshtml" />
+    <Content Include="Views\Student_Record\Delete.cshtml" />
+    <Content Include="Views\Student_Record\Details.cshtml" />
+    <Content Include="Views\Student_Record\Edit.cshtml" />
+    <Content Include="Views\Student_Record\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

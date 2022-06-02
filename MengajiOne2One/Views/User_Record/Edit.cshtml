@@ -4,6 +4,13 @@
     ViewBag.Title = "Kemaskini";
 }
 
+@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
+{
+    <script>
+        window.location = "../Login/Index"
+    </script>
+}
+
 <h2>Kemaskini Pengguna</h2>
 
 
