@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="c_id" />
     </Key>
-    <Property Name="c_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="c_date" Type="date" Nullable="false" />
     <Property Name="c_studentID" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="c_duration" Type="int" Nullable="false" />
@@ -14,7 +14,7 @@
     <Key>
       <PropertyRef Name="sal_ID" />
     </Key>
-    <Property Name="sal_ID" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="sal_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="sal_amount" Type="float" />
     <Property Name="sal_date" Type="date" Nullable="false" />
     <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
@@ -24,7 +24,7 @@
     <Key>
       <PropertyRef Name="per_ID" />
     </Key>
-    <Property Name="per_ID" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="per_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="per_desc" Type="varchar(max)" />
     <Property Name="per_date" Type="date" Nullable="false" />
     <Property Name="per_studentID" Type="varchar" MaxLength="12" Nullable="false" />

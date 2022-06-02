@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="c_id" />
     </Key>
-    <Property Name="c_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_id" Type="Int32" Nullable="false" />
     <Property Name="c_date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="c_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="c_duration" Type="Int32" Nullable="false" />
@@ -16,7 +16,7 @@
     <Key>
       <PropertyRef Name="sal_ID" />
     </Key>
-    <Property Name="sal_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sal_ID" Type="Int32" Nullable="false" />
     <Property Name="sal_amount" Type="Double" />
     <Property Name="sal_date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="sal_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
@@ -27,7 +27,7 @@
     <Key>
       <PropertyRef Name="per_ID" />
     </Key>
-    <Property Name="per_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="per_ID" Type="Int32" Nullable="false" />
     <Property Name="per_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="per_date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="per_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />

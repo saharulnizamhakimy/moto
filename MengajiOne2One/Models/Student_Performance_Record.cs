@@ -14,7 +14,7 @@ namespace MengajiOne2One.Models
     
     public partial class Student_Performance_Record
     {
-        public string per_ID { get; set; }
+        public int per_ID { get; set; }
         public string per_desc { get; set; }
         public System.DateTime per_date { get; set; }
         public string per_studentID { get; set; }

@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="motodbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="motodbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Class Record">
           <Key>
             <PropertyRef Name="c_id" />
           </Key>
-          <Property Name="c_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="c_date" Type="date" Nullable="false" />
           <Property Name="c_studentID" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="c_duration" Type="int" Nullable="false" />
@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="sal_ID" />
           </Key>
-          <Property Name="sal_ID" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="sal_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sal_amount" Type="float" />
           <Property Name="sal_date" Type="date" Nullable="false" />
           <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
@@ -29,7 +29,7 @@
           <Key>
             <PropertyRef Name="per_ID" />
           </Key>
-          <Property Name="per_ID" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="per_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="per_desc" Type="varchar(max)" />
           <Property Name="per_date" Type="date" Nullable="false" />
           <Property Name="per_studentID" Type="varchar" MaxLength="12" Nullable="false" />
@@ -171,8 +171,7 @@
             <End Role="User Record" EntitySet="User Record" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="motodbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -180,7 +179,7 @@
           <Key>
             <PropertyRef Name="c_id" />
           </Key>
-          <Property Name="c_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
           <Property Name="c_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="c_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="c_duration" Type="Int32" Nullable="false" />
@@ -192,7 +191,7 @@
           <Key>
             <PropertyRef Name="sal_ID" />
           </Key>
-          <Property Name="sal_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sal_ID" Type="Int32" Nullable="false" />
           <Property Name="sal_amount" Type="Double" />
           <Property Name="sal_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="sal_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
@@ -203,7 +202,7 @@
           <Key>
             <PropertyRef Name="per_ID" />
           </Key>
-          <Property Name="per_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="per_ID" Type="Int32" Nullable="false" />
           <Property Name="per_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="per_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="per_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />

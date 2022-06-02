@@ -17,7 +17,7 @@ namespace MengajiOne2One.Controllers
         // GET: User_Record
         public ActionResult Index()
         {
-            var user_Records = db.User_Record.Include(u => u.User_Type);
+            var user_Records = db.User_Records.Include(u => u.User_Type);
             return View(user_Records.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Record user_Record = db.User_Record.Find(id);
+            User_Record user_Record = db.User_Records.Find(id);
             if (user_Record == null)
             {
                 return HttpNotFound();
@@ -52,7 +52,7 @@ namespace MengajiOne2One.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.User_Record.Add(user_Record);
+                db.User_Records.Add(user_Record);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Record user_Record = db.User_Record.Find(id);
+            User_Record user_Record = db.User_Records.Find(id);
             if (user_Record == null)
             {
                 return HttpNotFound();
@@ -101,7 +101,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User_Record user_Record = db.User_Record.Find(id);
+            User_Record user_Record = db.User_Records.Find(id);
             if (user_Record == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace MengajiOne2One.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            User_Record user_Record = db.User_Record.Find(id);
-            db.User_Record.Remove(user_Record);
+            User_Record user_Record = db.User_Records.Find(id);
+            db.User_Records.Remove(user_Record);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

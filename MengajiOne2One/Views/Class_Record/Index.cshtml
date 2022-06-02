@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MengajiOne2One.Models.Class_Record>
+
+@{
+    ViewBag.Title = "Rekod Kelas";
+}
+@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
+{
+    <script>
+        window.location = "../Login/Index"
+    </script>
+}
+<h2>Senarai Kelas</h2>
+
+<p>
+    @Html.ActionLink("Tambah Kelas", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.c_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Record.s_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_Record.u_name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.c_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.c_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.c_duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Record.s_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Record.u_name)
+            </td>
+            <td>
+                @Html.ActionLink("Kemaskini", "Edit", new { id = item.c_id }) |
+                @Html.ActionLink("Butiran", "Details", new { id = item.c_id }) |
+                @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
+            </td>
+        </tr>
+    }
+
+</table>

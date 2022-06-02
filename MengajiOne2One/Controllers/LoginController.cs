@@ -23,7 +23,7 @@ namespace MengajiOne2One.Controllers
         {
                 using(motodbEntities db = new motodbEntities())
                 {
-                    var obj = db.User_Record.Where(a => a.u_id == usermodel.u_id && a.u_pwd == usermodel.u_pwd).FirstOrDefault();
+                    var obj = db.User_Records.Where(a => a.u_id == usermodel.u_id && a.u_pwd == usermodel.u_pwd).FirstOrDefault();
                    
 
                 if (obj != null)

@@ -14,7 +14,7 @@ namespace MengajiOne2One.Models
     
     public partial class Salary_Record
     {
-        public string sal_ID { get; set; }
+        public int sal_ID { get; set; }
         public Nullable<double> sal_amount { get; set; }
         public System.DateTime sal_date { get; set; }
         public string sal_teacherID { get; set; }

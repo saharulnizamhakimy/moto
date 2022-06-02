@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6b354766799845dba48534f37632f5da" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="motodbModel.Class_Record" Width="1.5" PointX="9.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="motodbModel.Class_Record" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="motodbModel.Salary_Record" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="motodbModel.Student_Performance_Record" Width="1.5" PointX="2.375" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="motodbModel.Student_Record" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />

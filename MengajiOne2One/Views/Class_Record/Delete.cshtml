@@ -1,0 +1,61 @@
+﻿@model MengajiOne2One.Models.Class_Record
+
+@{
+    ViewBag.Title = "Padam Kelas";
+}
+@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
+{
+    <script>
+        window.location = "../Login/Index"
+    </script>
+}
+<h2>Padam Kelas</h2>
+
+<h4>Adakah anda pasti mahu padam kelas ini?</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.c_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.c_duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Record.s_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Record.s_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Record.u_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Record.u_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Padam" class="btn btn-danger" onclick="return confirm('Adakah anda pasti?')" /> |
+            @Html.ActionLink("Kembali", "Index")
+        </div>
+    }
+</div>

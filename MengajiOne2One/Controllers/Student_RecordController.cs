@@ -17,7 +17,7 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Record
         public ActionResult Index()
         {
-            var student_Records = db.Student_Record.Include(s => s.User_Record);
+            var student_Records = db.Student_Records.Include(s => s.User_Record);
             return View(student_Records.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student_Record student_Record = db.Student_Record.Find(id);
+            Student_Record student_Record = db.Student_Records.Find(id);
             if (student_Record == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Record/Create
         public ActionResult Create()
         {
-            ViewBag.s_teacherID = new SelectList(db.User_Record, "u_id", "u_name");
+            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace MengajiOne2One.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Student_Record.Add(student_Record);
+                db.Student_Records.Add(student_Record);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.s_teacherID = new SelectList(db.User_Record, "u_id", "u_name", student_Record.s_teacherID);
+            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name", student_Record.s_teacherID);
             return View(student_Record);
         }
 
@@ -68,12 +68,12 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student_Record student_Record = db.Student_Record.Find(id);
+            Student_Record student_Record = db.Student_Records.Find(id);
             if (student_Record == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.s_teacherID = new SelectList(db.User_Record, "u_id", "u_name", student_Record.s_teacherID);
+            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name", student_Record.s_teacherID);
             return View(student_Record);
         }
 
@@ -90,7 +90,7 @@ namespace MengajiOne2One.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.s_teacherID = new SelectList(db.User_Record, "u_id", "u_name", student_Record.s_teacherID);
+            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name", student_Record.s_teacherID);
             return View(student_Record);
         }
 
@@ -101,7 +101,7 @@ namespace MengajiOne2One.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student_Record student_Record = db.Student_Record.Find(id);
+            Student_Record student_Record = db.Student_Records.Find(id);
             if (student_Record == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace MengajiOne2One.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Student_Record student_Record = db.Student_Record.Find(id);
-            db.Student_Record.Remove(student_Record);
+            Student_Record student_Record = db.Student_Records.Find(id);
+            db.Student_Records.Remove(student_Record);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

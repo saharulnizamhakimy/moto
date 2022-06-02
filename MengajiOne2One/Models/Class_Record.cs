@@ -14,7 +14,7 @@ namespace MengajiOne2One.Models
     
     public partial class Class_Record
     {
-        public string c_id { get; set; }
+        public int c_id { get; set; }
         public System.DateTime c_date { get; set; }
         public string c_studentID { get; set; }
         public int c_duration { get; set; }

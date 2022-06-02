@@ -21,7 +21,7 @@ namespace MengajiOne2One.Models
             public string s_pwd { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
-            [DisplayName("Nama")]
+            [DisplayName("Nama Pelajar")]
             public string s_name { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
