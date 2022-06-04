@@ -14,4 +14,5 @@ To be able to run this program on your machine, you will need to follow the inst
   1. Download the repository
   2. Extract all of the files in the zip file to your desired file directory.
   3. Open SSMS and import the 'motodb.bacpac' file into it.
-  4. 
+  4. Open 'webconfig.' file and change the Data Source directory as per your machine directory
+  5. You can launch the program now
