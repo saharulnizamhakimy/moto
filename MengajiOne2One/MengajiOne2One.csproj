@@ -310,6 +310,7 @@
     <Compile Include="Models\User_Type.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

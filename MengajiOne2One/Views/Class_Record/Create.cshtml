@@ -3,12 +3,6 @@
 @{
     ViewBag.Title = "Tambah Rekod Kelas";
 }
-@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
-{
-    <script>
-        window.location = "../Login/Index"
-    </script>
-}
 <h2>Tambah Rekod Kelas</h2>
 
 @using (Html.BeginForm())

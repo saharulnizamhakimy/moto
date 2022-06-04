@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MengajiOne2One.Controllers
 {
+    [AllowAnonymous]
     public class StartPageController : Controller
     {
         // GET: StartPage

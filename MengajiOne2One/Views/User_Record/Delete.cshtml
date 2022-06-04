@@ -4,13 +4,6 @@
     ViewBag.Title = "Padam";
 }
 
-@if (Session["UserID"] == null || Session["Usertype"].ToString() == "2")
-{
-    <script>
-        window.location = "../Login/Index"
-    </script>
-}
-
 <h2>Padam Pengguna</h2>
 
 <h3>Adakah anda pasti mahu padam pengguna ini?</h3>

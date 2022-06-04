@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MengajiOne2One.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

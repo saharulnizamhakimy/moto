@@ -10,6 +10,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
+    [Authorize(Roles ="Guru")]
     public class Class_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();

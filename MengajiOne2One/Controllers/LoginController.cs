@@ -4,22 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MengajiOne2One.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         motodbEntities db = new motodbEntities();
 
         // GET: Login
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
-
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(User_Record usermodel)
+        public ActionResult Index(User_Record usermodel,string ReturnUrl)
         {
                 using(motodbEntities db = new motodbEntities())
                 {
@@ -28,12 +31,17 @@ namespace MengajiOne2One.Controllers
 
                 if (obj != null)
                     {
-                    var obj1 = db.User_Types.Where(b => b.t_ID == obj.u_type).FirstOrDefault();
+                    FormsAuthentication.SetAuthCookie(usermodel.u_id, false);
                     Session["UserID"] = obj.u_id.ToString();
                         Session["Username"] = obj.u_name.ToString();
-                        Session["Usertype"] = obj.u_type.ToString();
-                        Session["User_type"] = obj1.t_desc.ToString();
-                    return RedirectToAction("Index", "Home");
+                    if(ReturnUrl != null)
+                    {
+                        return Redirect(ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
 
                     }
                     else
@@ -46,10 +54,12 @@ namespace MengajiOne2One.Controllers
             
             return View();
         }
-
+        [Authorize]
         public ActionResult Logout()
-        { 
-            Session.Clear();
+        {
+            FormsAuthentication.SignOut();
+            Session["UserID"] = null;
+            Session["Username"] = null;
             return RedirectToAction("Index", "Login");
         }
     }
