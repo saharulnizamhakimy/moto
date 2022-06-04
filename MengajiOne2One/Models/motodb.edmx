@@ -23,7 +23,8 @@
           <Property Name="sal_amount" Type="float" />
           <Property Name="sal_date" Type="date" Nullable="false" />
           <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="sal_month" Type="date" />
+          <Property Name="sal_month" Type="varchar" MaxLength="10" />
+          <Property Name="sal_status" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Student Performance Record">
           <Key>
@@ -195,8 +196,9 @@
           <Property Name="sal_amount" Type="Double" />
           <Property Name="sal_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="sal_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="sal_month" Type="DateTime" Precision="0" />
+          <Property Name="sal_month" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="User_Record" Relationship="Self.FK_Salary_Record_User_Record" FromRole="Salary_Record" ToRole="User_Record" />
+          <Property Name="sal_status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Student_Performance_Record">
           <Key>
@@ -206,7 +208,7 @@
           <Property Name="per_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="per_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="per_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="per_month" Type="String" />
+          <Property Name="per_month" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Student_Record" Relationship="Self.FK_Student_Performance_Record_Student_Record" FromRole="Student_Performance_Record" ToRole="Student_Record" />
         </EntityType>
         <EntityType Name="Student_Record">
@@ -373,6 +375,7 @@
           <EntitySetMapping Name="Salary_Records">
             <EntityTypeMapping TypeName="motodbModel.Salary_Record">
               <MappingFragment StoreEntitySet="Salary Record">
+                <ScalarProperty Name="sal_status" ColumnName="sal_status" />
                 <ScalarProperty Name="sal_ID" ColumnName="sal_ID" />
                 <ScalarProperty Name="sal_amount" ColumnName="sal_amount" />
                 <ScalarProperty Name="sal_date" ColumnName="sal_date" />

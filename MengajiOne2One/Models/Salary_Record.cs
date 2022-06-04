@@ -18,7 +18,8 @@ namespace MengajiOne2One.Models
         public Nullable<double> sal_amount { get; set; }
         public System.DateTime sal_date { get; set; }
         public string sal_teacherID { get; set; }
-        public Nullable<System.DateTime> sal_month { get; set; }
+        public string sal_month { get; set; }
+        public string sal_status { get; set; }
     
         public virtual User_Record User_Record { get; set; }
     }

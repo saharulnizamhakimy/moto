@@ -1,0 +1,53 @@
+﻿@model MengajiOne2One.Models.Salary_Record
+
+@{
+    ViewBag.Title = "Butiran Rekod Elaun";
+}
+
+<h2>Butiran Rekod ELaun</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Record.u_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Record.u_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sal_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sal_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sal_month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sal_month)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sal_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sal_amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sal_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sal_status)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Kemaskini", "Edit", new { id = Model.sal_ID }) |
+    @Html.ActionLink("Kembali", "Index")
+</p>

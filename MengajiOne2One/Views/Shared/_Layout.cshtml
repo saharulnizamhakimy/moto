@@ -91,7 +91,20 @@
                         </div>
                     </div>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                       aria-expanded="true" aria-controls="collapseFour">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Rekod Elaun</span>
+                    </a>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Rekod Elaun</h6>
+                            <a class="collapse-item" href="~/Salary_Record/Index">Senarai Elaun</a>
+                            <a class="collapse-item" href="~/Salary_Record/Create">Tambah Elaun</a>
+                        </div>
+                    </div>
+                </li>
             }
             else if (User.IsInRole("Guru"))
             {

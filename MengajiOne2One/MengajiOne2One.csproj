@@ -267,6 +267,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\Salary_RecordController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\Student_Performance_RecordController.cs" />
     <Compile Include="Controllers\Student_RecordController.cs" />
@@ -294,6 +295,7 @@
       <DependentUpon>motodb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Performance.cs" />
+    <Compile Include="Models\Salary.cs" />
     <Compile Include="Models\Salary_Record.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
@@ -2251,6 +2253,11 @@
     <Content Include="Views\Student_Performance_Record\Details.cshtml" />
     <Content Include="Views\Student_Performance_Record\Edit.cshtml" />
     <Content Include="Views\Student_Performance_Record\Index.cshtml" />
+    <Content Include="Views\Salary_Record\Create.cshtml" />
+    <Content Include="Views\Salary_Record\Delete.cshtml" />
+    <Content Include="Views\Salary_Record\Details.cshtml" />
+    <Content Include="Views\Salary_Record\Edit.cshtml" />
+    <Content Include="Views\Salary_Record\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

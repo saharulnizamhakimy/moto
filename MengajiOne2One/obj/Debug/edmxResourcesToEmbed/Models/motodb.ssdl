@@ -18,7 +18,8 @@
     <Property Name="sal_amount" Type="float" />
     <Property Name="sal_date" Type="date" Nullable="false" />
     <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
-    <Property Name="sal_month" Type="date" />
+    <Property Name="sal_month" Type="varchar" MaxLength="10" />
+    <Property Name="sal_status" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="Student Performance Record">
     <Key>

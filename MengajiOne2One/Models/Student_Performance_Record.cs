@@ -22,6 +22,4 @@ namespace MengajiOne2One.Models
     
         public virtual Student_Record Student_Record { get; set; }
     }
-
-    
 }

@@ -1,0 +1,76 @@
+﻿@model MengajiOne2One.Models.Salary_Record
+
+@{
+    ViewBag.Title = "Kemaskini Rekod Elaun";
+}
+
+<h2>Kemaskini Rekod Elaun</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.sal_ID)
+    @Html.HiddenFor(model => model.sal_date)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_teacherID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_teacherID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_teacherID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_month, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_month", new List<SelectListItem>{
+                       new SelectListItem{ Text="Januari", Value = "Januari" },
+                       new SelectListItem{ Text="Februari", Value = "Februari" },
+                       new SelectListItem{ Text="Mac", Value = "Mac" },
+                       new SelectListItem{ Text="April", Value = "April" },
+                       new SelectListItem{ Text="Mei", Value = "Mei" },
+                       new SelectListItem{ Text="Jun", Value = "Jun" },
+                       new SelectListItem{ Text="Julai", Value = "Julai" },
+                       new SelectListItem{ Text="Ogos", Value = "Ogos" },
+                       new SelectListItem{ Text="September", Value = "September" },
+                       new SelectListItem{ Text="Oktober", Value = "Oktober" },
+                       new SelectListItem{ Text="November", Value = "November" },
+                       new SelectListItem{ Text="Disember", Value = "Disember" }}, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_month, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_amount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sal_amount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sal_amount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_status", new List<SelectListItem>{
+                      new SelectListItem{ Text="Dalam Proses", Value = "Dalam Proses" },
+                      new SelectListItem{ Text="Selesai", Value = "Selesai" }}, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_status, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Kemaskini" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Kembali", "Index")
+</div>

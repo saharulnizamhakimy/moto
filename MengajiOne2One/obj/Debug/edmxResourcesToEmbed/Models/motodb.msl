@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Salary_Records">
       <EntityTypeMapping TypeName="motodbModel.Salary_Record">
         <MappingFragment StoreEntitySet="Salary Record">
+          <ScalarProperty Name="sal_status" ColumnName="sal_status" />
           <ScalarProperty Name="sal_ID" ColumnName="sal_ID" />
           <ScalarProperty Name="sal_amount" ColumnName="sal_amount" />
           <ScalarProperty Name="sal_date" ColumnName="sal_date" />
