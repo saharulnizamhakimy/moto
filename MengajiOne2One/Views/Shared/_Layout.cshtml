@@ -95,26 +95,34 @@
             }
             else if (User.IsInRole("Guru"))
             {
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-               aria-expanded="true" aria-controls="collapseThree">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Rekod Kelas</span>
-            </a>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Rekod Kelas</h6>
-                    <a class="collapse-item" href="~/Class_Record/Index">Senarai Kelas</a>
-                    <a class="collapse-item" href="~/Class_Record/Create">Tambah Kelas</a>
-                </div>
-            </div>
-        </li>
-            }
-            else
-            {
-                <script>
-                    window.location = "../Login/Index"
-                </script>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                       aria-expanded="true" aria-controls="collapseThree">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Rekod Kelas</span>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Rekod Kelas</h6>
+                            <a class="collapse-item" href="~/Class_Record/Index">Senarai Kelas</a>
+                            <a class="collapse-item" href="~/Class_Record/Create">Tambah Kelas</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Rekod Prestasi</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Rekod Prestasi</h6>
+                            <a class="collapse-item" href="~/Student_Performance_Record/Index">Senarai Prestasi</a>
+                            <a class="collapse-item" href="~/Student_Performance_Record/Create">Tambah Prestasi</a>
+                        </div>
+                    </div>
+                </li>
             }
 
             <!-- Divider -->

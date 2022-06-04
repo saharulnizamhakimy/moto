@@ -33,7 +33,7 @@
           <Property Name="per_desc" Type="varchar(max)" />
           <Property Name="per_date" Type="date" Nullable="false" />
           <Property Name="per_studentID" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="per_month" Type="date" />
+          <Property Name="per_month" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Student Record">
           <Key>
@@ -206,7 +206,7 @@
           <Property Name="per_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="per_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="per_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="per_month" Type="DateTime" Precision="0" />
+          <Property Name="per_month" Type="String" />
           <NavigationProperty Name="Student_Record" Relationship="Self.FK_Student_Performance_Record_Student_Record" FromRole="Student_Performance_Record" ToRole="Student_Record" />
         </EntityType>
         <EntityType Name="Student_Record">

@@ -1,0 +1,60 @@
+﻿@model MengajiOne2One.Models.Student_Performance_Record
+
+@{
+    ViewBag.Title = "Butiran Prestasi";
+}
+
+<h2>Butiran Prestasi</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Record.s_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Record.s_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Record.s_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Record.s_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.per_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.per_date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.per_month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.per_month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.per_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.per_desc)
+        </dd>
+
+
+
+
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Kemaskini", "Edit", new { id = Model.per_ID }) |
+    @Html.ActionLink("Kembali", "Index")
+</p>

@@ -1,0 +1,61 @@
+﻿@model MengajiOne2One.Models.Student_Performance_Record
+
+@{
+    ViewBag.Title = "Padam Rekod Prestasi";
+}
+
+<h2>Padam Rekod Prestasi</h2>
+
+<h3>Adakah anda pasti mahu padam rekod prestasi ini?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Record.s_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Record.s_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Record.s_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Record.s_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.per_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.per_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.per_month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.per_month)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.per_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.per_desc)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Padam" class="btn btn-danger" onclick="return confirm('Adakah anda pasti?')"/> |
+            @Html.ActionLink("Kembali", "Index")
+        </div>
+    }
+</div>

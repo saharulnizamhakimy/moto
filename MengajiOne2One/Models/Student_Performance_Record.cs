@@ -18,8 +18,10 @@ namespace MengajiOne2One.Models
         public string per_desc { get; set; }
         public System.DateTime per_date { get; set; }
         public string per_studentID { get; set; }
-        public Nullable<System.DateTime> per_month { get; set; }
+        public string per_month { get; set; }
     
         public virtual Student_Record Student_Record { get; set; }
     }
+
+    
 }
