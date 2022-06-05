@@ -10,7 +10,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
-    [Authorize(Roles ="Guru")]
+    [Authorize(Roles ="Guru,Admin")]
     public class Class_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();
@@ -18,8 +18,17 @@ namespace MengajiOne2One.Controllers
         // GET: Class_Record
         public ActionResult Index()
         {
-            var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c=>c.c_teacherID==User.Identity.Name);
-            return View(class_Records.ToList());
+            if (User.IsInRole("Guru"))
+            {
+                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_teacherID == User.Identity.Name);
+                return View(class_Records.ToList());
+            }
+            else
+            {
+                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record);
+                return View(class_Records.ToList());
+            }
+
         }
 
         // GET: Class_Record/Details/5
@@ -40,7 +49,16 @@ namespace MengajiOne2One.Controllers
         // GET: Class_Record/Create
         public ActionResult Create()
         {
-            ViewBag.c_studentID = new SelectList(db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name), "s_id", "s_name");
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
+                .Select(s => new
+                {
+                    Text = s.s_id + " - " + s.s_name,
+                    Value = s.s_id
+                })
+                .ToList();
+
+            ViewBag.c_studentID = new SelectList(clients, "Value", "Text");
+
             ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a=>a.u_type==2), "u_id", "u_name");
             return View();
         }
@@ -76,7 +94,15 @@ namespace MengajiOne2One.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.c_studentID = new SelectList(db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name), "s_id", "s_name");
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
+                .Select(s => new
+                {
+                    Text = s.s_id + " - " + s.s_name,
+                    Value = s.s_id
+                })
+                .ToList();
+
+            ViewBag.c_studentID = new SelectList(clients, "Value", "Text",class_Record.c_studentID);
             ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a => a.u_type == 2), "u_id", "u_name", class_Record.c_teacherID);
             return View(class_Record);
         }
@@ -94,7 +120,16 @@ namespace MengajiOne2One.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.c_studentID = new SelectList(db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name), "s_id", "s_name");
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
+                .Select(s => new
+                {
+                    Text = s.s_id + " - " + s.s_name,
+                    Value = s.s_id
+                })
+                .ToList();
+
+            ViewBag.c_studentID = new SelectList(clients, "Value", "Text", class_Record.c_studentID);
+
             ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a => a.u_type == 2), "u_id", "u_name", class_Record.c_teacherID);
             return View(class_Record);
         }

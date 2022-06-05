@@ -62,6 +62,7 @@ namespace MengajiOne2One.Controllers
             Session["UserID"] = null;
             Session["Username"] = null;
             return RedirectToAction("Index", "Login");
+            
         }
     }
 }

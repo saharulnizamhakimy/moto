@@ -40,7 +40,7 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Performance_Record/Create
         public ActionResult Create()
         {
-            var clients = db.Student_Records
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
                 .Select(s => new
                 {
                     Text = s.s_id + " - " + s.s_name,
@@ -90,7 +90,7 @@ namespace MengajiOne2One.Controllers
                 return HttpNotFound();
             }
 
-            var clients = db.Student_Records
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
                 .Select(s => new
                 {
                     Text = s.s_id + " - " + s.s_name,
@@ -115,7 +115,16 @@ namespace MengajiOne2One.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.per_studentID = new SelectList(db.Student_Records, "s_id", "s_name", student_Performance_Record.per_studentID);
+
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
+                .Select(s => new
+                {
+                    Text = s.s_id + " - " + s.s_name,
+                    Value = s.s_id
+                })
+                .ToList();
+
+            ViewBag.per_studentID = new SelectList(clients, "Value", "Text", student_Performance_Record.per_studentID);
             return View(student_Performance_Record);
         }
 

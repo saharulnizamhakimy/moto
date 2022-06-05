@@ -40,7 +40,15 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Record/Create
         public ActionResult Create()
         {
-            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name");
+            var clients = db.User_Records
+                .Select(s => new
+                {
+                    Text = s.u_id + " - " + s.u_name,
+                    Value = s.u_id
+                })
+                .ToList();
+
+            ViewBag.s_teacherID = new SelectList(clients, "Value", "Text");
             return View();
         }
 
@@ -74,7 +82,16 @@ namespace MengajiOne2One.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name", student_Record.s_teacherID);
+
+            var clients = db.User_Records
+                .Select(s => new
+                {
+                    Text = s.u_id + " - " + s.u_name,
+                    Value = s.u_id
+                })
+                .ToList();
+
+            ViewBag.s_teacherID = new SelectList(clients, "Value", "Text", student_Record.s_teacherID);
             return View(student_Record);
         }
 

@@ -6,7 +6,10 @@
 <h2>Senarai Kelas</h2>
 
 <p>
-    @Html.ActionLink("Tambah Kelas", "Create")
+    @if (User.IsInRole("Guru"))
+    {
+        @Html.ActionLink("Tambah Kelas", "Create")
+    }
 </p>
 <table class="table">
     <tr>
@@ -25,7 +28,12 @@
         <th>
             @Html.DisplayNameFor(model => model.User_Record.u_name)
         </th>
-        <th></th>
+
+        @if (User.IsInRole("Guru"))
+        {
+            <th></th>
+        }
+
     </tr>
 
     @foreach (var item in Model)
@@ -46,11 +54,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User_Record.u_name)
             </td>
+
+            @if (User.IsInRole("Guru"))
+                {
             <td>
-                @Html.ActionLink("Kemaskini", "Edit", new { id = item.c_id }) |
-                @Html.ActionLink("Butiran", "Details", new { id = item.c_id }) |
-                @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
+
+                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.c_id }) |
+                    @Html.ActionLink("Butiran", "Details", new { id = item.c_id }) |
+                    @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
+                
             </td>
+                }
         </tr>
     }
 
