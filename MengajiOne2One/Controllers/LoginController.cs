@@ -22,6 +22,7 @@ namespace MengajiOne2One.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult Index(User_Record usermodel,string ReturnUrl)
         {
                 using(motodbEntities db = new motodbEntities())

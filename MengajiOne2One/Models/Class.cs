@@ -26,6 +26,7 @@ namespace MengajiOne2One.Models
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Tempoh (Minit)")]
+            [Range(30,120,ErrorMessage = "Tempoh (Minit) hendaklah berada dalam lingkungan 30 minit hingga 120 minit sahaja.")]
             public int c_duration { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
