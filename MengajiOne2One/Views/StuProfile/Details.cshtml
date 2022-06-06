@@ -1,0 +1,76 @@
+﻿@model MengajiOne2One.Models.Student_Record
+
+@{
+    ViewBag.Title = "Butiran Pelajar";
+}
+
+
+<h2>Butiran Pelajar</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_contactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_contactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_regDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_regDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_package)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_package)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Record.u_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Record.u_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Kemaskini", "Edit", new { id = Model.s_id }) |
+    @Html.ActionLink("Kembali", "Index", "StartStudent")
+</p>

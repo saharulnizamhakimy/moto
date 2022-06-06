@@ -10,7 +10,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class Student_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();
@@ -23,6 +23,7 @@ namespace MengajiOne2One.Controllers
         }
 
         // GET: Student_Record/Details/5
+        
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -40,7 +41,7 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Record/Create
         public ActionResult Create()
         {
-            var clients = db.User_Records
+            var clients = db.User_Records.Where(a => a.u_type == 2)
                 .Select(s => new
                 {
                     Text = s.u_id + " - " + s.u_name,
@@ -65,8 +66,15 @@ namespace MengajiOne2One.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            var clients = db.User_Records.Where(a => a.u_type == 2)
+                .Select(s => new
+                {
+                    Text = s.u_id + " - " + s.u_name,
+                    Value = s.u_id
+                })
+                .ToList();
 
-            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name", student_Record.s_teacherID);
+            ViewBag.s_teacherID = new SelectList(clients, "Value", "Text", student_Record.s_teacherID);
             return View(student_Record);
         }
 
@@ -108,7 +116,15 @@ namespace MengajiOne2One.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.s_teacherID = new SelectList(db.User_Records, "u_id", "u_name", student_Record.s_teacherID);
+            var clients = db.User_Records.Where(a => a.u_type == 2)
+                .Select(s => new
+                {
+                    Text = s.u_id + " - " + s.u_name,
+                    Value = s.u_id
+                })
+                .ToList();
+
+            ViewBag.s_teacherID = new SelectList(clients, "Value", "Text", student_Record.s_teacherID);
             return View(student_Record);
         }
 

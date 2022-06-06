@@ -45,7 +45,6 @@ namespace MengajiOne2One
                          where User_Record.u_id==username
                          select User_Type.t_desc).ToArray();
                 return res;
-
             }
               
         }

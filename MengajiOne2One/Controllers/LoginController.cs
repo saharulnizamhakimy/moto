@@ -34,20 +34,33 @@ namespace MengajiOne2One.Controllers
                     {
                     FormsAuthentication.SetAuthCookie(usermodel.u_id, false);
                     Session["UserID"] = obj.u_id.ToString();
-                        Session["Username"] = obj.u_name.ToString();
-                    if(ReturnUrl != null)
-                    {
-                        return Redirect(ReturnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    Session["Username"] = obj.u_name.ToString();
+                        if(ReturnUrl != null)
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
 
                     }
                     else
                     {
-                        ModelState.AddModelError("", "ID Pengguna atau Kata Laluan tidak sah");
+                        var obj2 = db.Student_Records.Where(a => a.s_id == usermodel.u_id && a.s_pwd == usermodel.u_pwd).FirstOrDefault();
+                        if (obj2 != null)
+                        {
+                            FormsAuthentication.SetAuthCookie(usermodel.u_id, false);
+                            Session["UserID"] = obj2.s_id.ToString();
+                            Session["Username"] = obj2.s_name.ToString();
+                            return RedirectToAction("Index", "StartStudent");
+
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "ID Pengguna atau Kata Laluan tidak sah");
+
+                        }
                     }
 
                 }

@@ -58,7 +58,6 @@ namespace MengajiOne2One.Controllers
                 .ToList();
 
             ViewBag.c_studentID = new SelectList(clients, "Value", "Text");
-
             ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a=>a.u_type==2), "u_id", "u_name");
             return View();
         }
@@ -77,7 +76,15 @@ namespace MengajiOne2One.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.c_studentID = new SelectList(db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name), "s_id", "s_name");
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
+                .Select(s => new
+                {
+                    Text = s.s_id + " - " + s.s_name,
+                    Value = s.s_id
+                })
+                .ToList();
+
+            ViewBag.c_studentID = new SelectList(clients, "Value", "Text", class_Record.c_studentID);
             ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a => a.u_type == 2), "u_id", "u_name", class_Record.c_teacherID);
             return View(class_Record);
         }
