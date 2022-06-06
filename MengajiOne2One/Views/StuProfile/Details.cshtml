@@ -4,7 +4,13 @@
     ViewBag.Title = "Butiran Pelajar";
 }
 
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AlertMessage"]
+    </div>
 
+}
 <h2>Butiran Pelajar</h2>
 
 <div>

@@ -66,6 +66,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Entry(user_Record).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Profil berjaya dikemaskini.";
                 return RedirectToAction("Details", new { id = Session["UserID"] });
             }
             ViewBag.u_type = new SelectList(db.User_Types, "t_ID", "t_desc", user_Record.u_type);

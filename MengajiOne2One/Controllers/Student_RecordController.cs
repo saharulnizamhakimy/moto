@@ -64,6 +64,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Student_Records.Add(student_Record);
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya disimpan.";
                 return RedirectToAction("Index");
             }
             var clients = db.User_Records.Where(a => a.u_type == 2)
@@ -114,6 +115,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Entry(student_Record).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya dikemaskini.";
                 return RedirectToAction("Index");
             }
             var clients = db.User_Records.Where(a => a.u_type == 2)
@@ -151,6 +153,7 @@ namespace MengajiOne2One.Controllers
             Student_Record student_Record = db.Student_Records.Find(id);
             db.Student_Records.Remove(student_Record);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Rekod berjaya dipadam.";
             return RedirectToAction("Index");
         }
 

@@ -74,6 +74,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Entry(student_Record).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya dikemaskini.";
                 return RedirectToAction("Details", new { id = Session["UserID"] });
             }
             var clients = db.User_Records

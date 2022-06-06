@@ -55,6 +55,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.User_Records.Add(user_Record);
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya disimpan.";
                 return RedirectToAction("Index");
             }
 
@@ -89,6 +90,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Entry(user_Record).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya dikemaskini.";
                 return RedirectToAction("Index");
             }
             ViewBag.u_type = new SelectList(db.User_Types, "t_ID", "t_desc", user_Record.u_type);
@@ -118,6 +120,7 @@ namespace MengajiOne2One.Controllers
             User_Record user_Record = db.User_Records.Find(id);
             db.User_Records.Remove(user_Record);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Rekod berjaya dipadam.";
             return RedirectToAction("Index");
         }
 

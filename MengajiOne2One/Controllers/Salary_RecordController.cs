@@ -64,6 +64,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Salary_Records.Add(salary_Record);
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya disimpan.";
                 return RedirectToAction("Index");
             }
 
@@ -107,6 +108,7 @@ namespace MengajiOne2One.Controllers
             {
                 db.Entry(salary_Record).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Rekod berjaya dikemaskini.";
                 return RedirectToAction("Index");
             }
             ViewBag.sal_teacherID = new SelectList(db.User_Records, "u_id", "u_name", salary_Record.sal_teacherID);
@@ -136,6 +138,7 @@ namespace MengajiOne2One.Controllers
             Salary_Record salary_Record = db.Salary_Records.Find(id);
             db.Salary_Records.Remove(salary_Record);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Rekod berjaya dipadam.";
             return RedirectToAction("Index");
         }
 

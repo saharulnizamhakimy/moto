@@ -11,6 +11,14 @@
         @Html.ActionLink("Tambah Kelas", "Create")
     }
 </p>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AlertMessage"]
+    </div>
+
+}
+
 <table class="table">
     <tr>
         <th>
@@ -56,15 +64,15 @@
             </td>
 
             @if (User.IsInRole("Guru"))
-                {
-            <td>
+            {
+                <td>
 
                     @Html.ActionLink("Kemaskini", "Edit", new { id = item.c_id }) |
                     @Html.ActionLink("Butiran", "Details", new { id = item.c_id }) |
                     @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
-                
-            </td>
-                }
+
+                </td>
+            }
         </tr>
     }
 

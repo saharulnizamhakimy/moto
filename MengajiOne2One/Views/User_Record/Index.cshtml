@@ -9,6 +9,13 @@
 <p>
     @Html.ActionLink("Tambah Pengguna", "Create")
 </p>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AlertMessage"]
+    </div>
+
+}
 <div class=" table-responsive">
     <table class="table">
         <tr>

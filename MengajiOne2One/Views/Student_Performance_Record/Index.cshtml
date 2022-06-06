@@ -9,6 +9,13 @@
 <p>
     @Html.ActionLink("Tambah Prestasi", "Create")
 </p>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AlertMessage"]
+    </div>
+
+}
 <table class="table">
     <tr>
         <th>
@@ -29,29 +36,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-<td>
-            @Html.DisplayFor(modelItem => item.Student_Record.s_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student_Record.s_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.per_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.per_month)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.per_desc)
-        </td>
-        <td>
-            @Html.ActionLink("Kemaskini", "Edit", new { id=item.per_ID }) |
-            @Html.ActionLink("Butiran", "Details", new { id=item.per_ID }) |
-            @Html.ActionLink("Padam", "Delete", new { id=item.per_ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Record.s_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Record.s_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.per_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.per_month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.per_desc)
+            </td>
+            <td>
+                @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }) |
+                @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }) |
+                @Html.ActionLink("Padam", "Delete", new { id = item.per_ID })
+            </td>
+        </tr>
+    }
 
 </table>
