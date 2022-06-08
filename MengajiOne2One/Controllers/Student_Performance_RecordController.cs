@@ -10,7 +10,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
-    [Authorize(Roles ="Guru")]
+    [Authorize(Roles = "Guru")]
     public class Student_Performance_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();
@@ -18,8 +18,9 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Performance_Record
         public ActionResult Index()
         {
-            var student_Performance_Records = db.Student_Performance_Records.Include(s => s.Student_Record).Where(s => s.Student_Record.s_teacherID == User.Identity.Name);
-            return View(student_Performance_Records.ToList());
+                var student_Performance_Records = db.Student_Performance_Records.Include(s => s.Student_Record).Where(s => s.Student_Record.s_teacherID == User.Identity.Name);
+                return View(student_Performance_Records.ToList());
+                     
         }
 
         // GET: Student_Performance_Record/Details/5
@@ -66,7 +67,7 @@ namespace MengajiOne2One.Controllers
                 TempData["AlertMessage"] = "Rekod berjaya disimpan.";
                 return RedirectToAction("Index");
             }
-            var clients = db.Student_Records
+            var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
                 .Select(s => new
                 {
                     Text = s.s_id + " - " + s.s_name,

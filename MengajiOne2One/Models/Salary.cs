@@ -17,6 +17,7 @@ namespace MengajiOne2One.Models
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Amaun")]
+            [Range(0, 10000, ErrorMessage = "Amaun (RM) hendaklah sekurang kurangnya RM0.")]
             public Nullable<double> sal_amount { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]

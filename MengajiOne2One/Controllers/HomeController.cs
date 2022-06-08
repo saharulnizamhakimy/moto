@@ -18,10 +18,12 @@ namespace MengajiOne2One.Controllers
                 var numStudent = db.Student_Records.Count();
                 var numAdmin = db.User_Records.Where(a => a.u_type == 1).Count();
                 var numGuru = db.User_Records.Where(a => a.u_type == 2).Count();
+                var numKelas = db.Class_Records.Count();
                 ViewBag.numUser = numUser;
                 ViewBag.numStudent = numStudent;
                 ViewBag.numAdmin = numAdmin;
                 ViewBag.numGuru = numGuru;
+                ViewBag.numKelas = numKelas;
                 return View();
             }
         }

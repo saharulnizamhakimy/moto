@@ -26,7 +26,9 @@ namespace MengajiOne2One.Models
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Umur")]
+            [Range(1, 120, ErrorMessage = "Umur (Tahun) hendaklah berada dalam lingkungan 1 tahun hingga 120 tahun sahaja.")]
             public Nullable<int> s_age { get; set; }
+
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Alamat")]
