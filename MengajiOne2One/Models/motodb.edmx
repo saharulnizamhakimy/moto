@@ -12,8 +12,11 @@
           <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="c_date" Type="date" Nullable="false" />
           <Property Name="c_studentID" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="c_duration" Type="int" Nullable="false" />
+          <Property Name="c_duration" Type="nvarchar" MaxLength="50" />
           <Property Name="c_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="c_timeStart" Type="nvarchar" MaxLength="50" />
+          <Property Name="c_timeEnd" Type="nvarchar" MaxLength="50" />
+          <Property Name="c_status" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Salary Record">
           <Key>
@@ -183,10 +186,13 @@
           <Property Name="c_id" Type="Int32" Nullable="false" />
           <Property Name="c_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="c_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="c_duration" Type="Int32" Nullable="false" />
+          <Property Name="c_duration" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="c_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Student_Record" Relationship="Self.FK_Class_Record_Student_Record" FromRole="Class_Record" ToRole="Student_Record" />
           <NavigationProperty Name="User_Record" Relationship="Self.FK_Class_Record_User_Record2" FromRole="Class_Record" ToRole="User_Record" />
+          <Property Name="c_timeStart" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="c_timeEnd" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="c_status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Salary_Record">
           <Key>
@@ -364,6 +370,9 @@
           <EntitySetMapping Name="Class_Records">
             <EntityTypeMapping TypeName="motodbModel.Class_Record">
               <MappingFragment StoreEntitySet="Class Record">
+                <ScalarProperty Name="c_status" ColumnName="c_status" />
+                <ScalarProperty Name="c_timeEnd" ColumnName="c_timeEnd" />
+                <ScalarProperty Name="c_timeStart" ColumnName="c_timeStart" />
                 <ScalarProperty Name="c_id" ColumnName="c_id" />
                 <ScalarProperty Name="c_date" ColumnName="c_date" />
                 <ScalarProperty Name="c_studentID" ColumnName="c_studentID" />

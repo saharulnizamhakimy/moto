@@ -1,9 +1,10 @@
 ﻿@model MengajiOne2One.Models.Class_Record
 
 @{
-    ViewBag.Title = "Butiran Kelas";
+    ViewBag.Title = "Butiran Rekod Kelas";
 }
-<h2>Butiran Kelas</h2>
+
+<h2>Butiran Rekod Kelas</h2>
 
 <div>
     <hr />
@@ -25,6 +26,30 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.c_timeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_timeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.c_timeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_timeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.c_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_status)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Student_Record.s_name)
         </dt>
 
@@ -43,6 +68,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Kemaskini", "Edit", new { id = Model.c_id }) |
-    @Html.ActionLink("Kembali", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </p>

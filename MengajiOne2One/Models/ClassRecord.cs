@@ -24,14 +24,18 @@ namespace MengajiOne2One.Models
             [DisplayName("Nama Pelajar")]
             public string c_studentID { get; set; }
 
-            [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Tempoh (Minit)")]
-            [Range(30,120,ErrorMessage = "Tempoh (Minit) hendaklah berada dalam lingkungan 30 minit hingga 120 minit sahaja.")]
-            public int c_duration { get; set; }
+            public string c_duration { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Nama Tutor")]
             public string c_teacherID { get; set; }
+            [DisplayName("Masa Kelas Bermula")]
+            public string c_timeStart { get; set; }
+            [DisplayName("Masa Kelas Berakhir")]
+            public string c_timeEnd { get; set; }
+            [DisplayName("Status Pengesahan Pelajar")]
+            public string c_status { get; set; } = "BELUM DISAHKAN";
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿@model MengajiOne2One.Models.Class_Record
 
 @{
-    ViewBag.Title = "Padam Kelas";
+    ViewBag.Title = "Delete";
 }
-<h2>Padam Kelas</h2>
 
-<h4>Adakah anda pasti mahu padam kelas ini?</h4>
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
 <div>
+    <h4>Class_Record</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -26,30 +28,53 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Student_Record.s_name)
+            @Html.DisplayNameFor(model => model.c_timeStart)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Student_Record.s_name)
+            @Html.DisplayFor(model => model.c_timeStart)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User_Record.u_name)
+            @Html.DisplayNameFor(model => model.c_timeEnd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User_Record.u_name)
+            @Html.DisplayFor(model => model.c_timeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.c_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Record.s_pwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Record.s_pwd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Record.u_pwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Record.u_pwd)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Padam" class="btn btn-danger" onclick="return confirm('Adakah anda pasti?')" /> |
-            @Html.ActionLink("Kembali", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

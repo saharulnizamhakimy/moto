@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -10,7 +11,6 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
-    [Authorize(Roles ="Guru,Admin")]
     public class Class_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();
@@ -18,17 +18,8 @@ namespace MengajiOne2One.Controllers
         // GET: Class_Record
         public ActionResult Index()
         {
-            if (User.IsInRole("Guru"))
-            {
-                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_teacherID == User.Identity.Name);
-                return View(class_Records.ToList());
-            }
-            else
-            {
-                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record);
-                return View(class_Records.ToList());
-            }
-
+            var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(s => s.Student_Record.s_teacherID == User.Identity.Name);
+            return View(class_Records.ToList());
         }
 
         // GET: Class_Record/Details/5
@@ -50,15 +41,15 @@ namespace MengajiOne2One.Controllers
         public ActionResult Create()
         {
             var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
-                .Select(s => new
-                {
-                    Text = s.s_id + " - " + s.s_name,
-                    Value = s.s_id
-                })
-                .ToList();
+               .Select(s => new
+               {
+                   Text = s.s_id + " - " + s.s_name,
+                   Value = s.s_id
+               })
+               .ToList();
 
             ViewBag.c_studentID = new SelectList(clients, "Value", "Text");
-            ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a=>a.u_type==2), "u_id", "u_name");
+            ViewBag.c_teacherID = new SelectList(db.User_Records, "u_id", "u_name");
             return View();
         }
 
@@ -67,26 +58,24 @@ namespace MengajiOne2One.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "c_id,c_date,c_studentID,c_duration,c_teacherID")] Class_Record class_Record)
+        public ActionResult Create([Bind(Include = "c_id,c_date,c_studentID,c_duration,c_teacherID,c_timeStart,c_timeEnd,c_status")] Class_Record class_Record)
         {
             if (ModelState.IsValid)
             {
                 db.Class_Records.Add(class_Record);
                 db.SaveChanges();
-                TempData["AlertMessage"] = "Rekod berjaya disimpan.";
                 return RedirectToAction("Index");
             }
-
             var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
-                .Select(s => new
-                {
-                    Text = s.s_id + " - " + s.s_name,
-                    Value = s.s_id
-                })
-                .ToList();
+               .Select(s => new
+               {
+                   Text = s.s_id + " - " + s.s_name,
+                   Value = s.s_id
+               })
+               .ToList();
 
             ViewBag.c_studentID = new SelectList(clients, "Value", "Text", class_Record.c_studentID);
-            ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a => a.u_type == 2), "u_id", "u_name", class_Record.c_teacherID);
+            ViewBag.c_teacherID = new SelectList(db.User_Records, "u_id", "u_pwd", class_Record.c_teacherID);
             return View(class_Record);
         }
 
@@ -103,15 +92,15 @@ namespace MengajiOne2One.Controllers
                 return HttpNotFound();
             }
             var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
-                .Select(s => new
-                {
-                    Text = s.s_id + " - " + s.s_name,
-                    Value = s.s_id
-                })
-                .ToList();
+               .Select(s => new
+               {
+                   Text = s.s_id + " - " + s.s_name,
+                   Value = s.s_id
+               })
+               .ToList();
 
-            ViewBag.c_studentID = new SelectList(clients, "Value", "Text",class_Record.c_studentID);
-            ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a => a.u_type == 2), "u_id", "u_name", class_Record.c_teacherID);
+            ViewBag.c_studentID = new SelectList(clients, "Value", "Text", class_Record.c_studentID);
+            ViewBag.c_teacherID = new SelectList(db.User_Records, "u_id", "u_pwd", class_Record.c_teacherID);
             return View(class_Record);
         }
 
@@ -120,28 +109,47 @@ namespace MengajiOne2One.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "c_id,c_date,c_studentID,c_duration,c_teacherID")] Class_Record class_Record)
+        public ActionResult Edit([Bind(Include = "c_id,c_date,c_studentID,c_duration,c_teacherID,c_timeStart,c_timeEnd,c_status")] Class_Record class_Record)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(class_Record).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["AlertMessage"] = "Rekod berjaya dikemaskini.";
                 return RedirectToAction("Index");
             }
             var clients = db.Student_Records.Where(a => a.s_teacherID == User.Identity.Name)
-                .Select(s => new
-                {
-                    Text = s.s_id + " - " + s.s_name,
-                    Value = s.s_id
-                })
-                .ToList();
+               .Select(s => new
+               {
+                   Text = s.s_id + " - " + s.s_name,
+                   Value = s.s_id
+               })
+               .ToList();
 
             ViewBag.c_studentID = new SelectList(clients, "Value", "Text", class_Record.c_studentID);
-
-            ViewBag.c_teacherID = new SelectList(db.User_Records.Where(a => a.u_type == 2), "u_id", "u_name", class_Record.c_teacherID);
+            ViewBag.c_teacherID = new SelectList(db.User_Records, "u_id", "u_pwd", class_Record.c_teacherID);
             return View(class_Record);
         }
+
+        public ActionResult EditEndClass(int? id)
+        {
+            using (motodbEntities db = new motodbEntities())
+            {
+                Class_Record updateRecord = (from c in db.Class_Records
+                                            where c.c_id == id
+                                            select c).FirstOrDefault();
+                updateRecord.c_timeEnd = @DateTime.Now.ToString("HH:mm:ss");
+                var now = @DateTime.Now.ToString("HH:mm:ss");
+                var timeEnd = Convert.ToDateTime(now);
+                var timeStart= Convert.ToDateTime(updateRecord.c_timeStart);
+                var diff = timeEnd - timeStart;
+                updateRecord.c_duration = diff.ToString();
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        
 
         // GET: Class_Record/Delete/5
         public ActionResult Delete(int? id)
@@ -166,7 +174,6 @@ namespace MengajiOne2One.Controllers
             Class_Record class_Record = db.Class_Records.Find(id);
             db.Class_Records.Remove(class_Record);
             db.SaveChanges();
-            TempData["AlertMessage"] = "Rekod berjaya dipadam.";
             return RedirectToAction("Index");
         }
 

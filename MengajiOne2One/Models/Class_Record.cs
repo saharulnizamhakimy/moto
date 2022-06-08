@@ -17,8 +17,11 @@ namespace MengajiOne2One.Models
         public int c_id { get; set; }
         public System.DateTime c_date { get; set; }
         public string c_studentID { get; set; }
-        public int c_duration { get; set; }
+        public string c_duration { get; set; }
         public string c_teacherID { get; set; }
+        public string c_timeStart { get; set; }
+        public string c_timeEnd { get; set; }
+        public string c_status { get; set; } = "BELUM DISAHKAN";
     
         public virtual Student_Record Student_Record { get; set; }
         public virtual User_Record User_Record { get; set; }

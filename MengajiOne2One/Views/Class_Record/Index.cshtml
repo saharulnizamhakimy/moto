@@ -1,29 +1,16 @@
 ﻿@model IEnumerable<MengajiOne2One.Models.Class_Record>
 
 @{
-    ViewBag.Title = "Rekod Kelas";
+    ViewBag.Title = "Index";
 }
-<h2>Senarai Kelas</h2>
+
+<h2>Rekod Kelas</h2>
 
 <p>
-    @if (User.IsInRole("Guru"))
-    {
-        @Html.ActionLink("Tambah Kelas", "Create")
-    }
+    @Html.ActionLink("Mulakan Kelas", "Create",null, new { @class="btn btn-success"  })
 </p>
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["AlertMessage"]
-    </div>
-
-}
-
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.c_id)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.c_date)
         </th>
@@ -31,49 +18,56 @@
             @Html.DisplayNameFor(model => model.c_duration)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.c_timeStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_timeEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_status)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Student_Record.s_name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.User_Record.u_name)
         </th>
-
-        @if (User.IsInRole("Guru"))
-        {
-            <th></th>
-        }
-
+        <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.c_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.c_date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.c_duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student_Record.s_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User_Record.u_name)
-            </td>
-
-            @if (User.IsInRole("Guru"))
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_timeStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_timeEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_Record.s_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_Record.u_name)
+        </td>
+        <td>
+            @if (item.c_timeEnd == null)
             {
-                <td>
-
-                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.c_id }) |
-                    @Html.ActionLink("Butiran", "Details", new { id = item.c_id }) |
-                    @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
-
-                </td>
+                @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id },new { onclick = "return confirm('Adakah anda pasti?');" })
             }
-        </tr>
-    }
+
+            @Html.ActionLink("Butiran", "Details", new { id = item.c_id })|
+            @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
+        </td>
+    </tr>
+}
 
 </table>

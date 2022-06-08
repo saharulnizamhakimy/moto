@@ -277,7 +277,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\ClassRecord.cs" />
     <Compile Include="Models\Class_Record.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
@@ -2245,11 +2245,6 @@
     <Content Include="Views\Student_Record\Details.cshtml" />
     <Content Include="Views\Student_Record\Edit.cshtml" />
     <Content Include="Views\Student_Record\Index.cshtml" />
-    <Content Include="Views\Class_Record\Create.cshtml" />
-    <Content Include="Views\Class_Record\Delete.cshtml" />
-    <Content Include="Views\Class_Record\Details.cshtml" />
-    <Content Include="Views\Class_Record\Edit.cshtml" />
-    <Content Include="Views\Class_Record\Index.cshtml" />
     <Content Include="Views\Student_Performance_Record\Create.cshtml" />
     <Content Include="Views\Student_Performance_Record\Delete.cshtml" />
     <Content Include="Views\Student_Performance_Record\Details.cshtml" />
@@ -2266,6 +2261,11 @@
     <Content Include="Views\StuProfile\Details.cshtml" />
     <Content Include="Views\StuProfile\Edit.cshtml" />
     <Content Include="Views\StuProfile\_ViewStart.cshtml" />
+    <Content Include="Views\Class_Record\Create.cshtml" />
+    <Content Include="Views\Class_Record\Delete.cshtml" />
+    <Content Include="Views\Class_Record\Details.cshtml" />
+    <Content Include="Views\Class_Record\Edit.cshtml" />
+    <Content Include="Views\Class_Record\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

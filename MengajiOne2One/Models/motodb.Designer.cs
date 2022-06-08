@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Acer\Documents\SEM 6\WBL\MengajiOne2One\moto\MengajiOne2One\Models\motodb.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Dell Inspiron\OneDrive\Documents\GitHub\moto\MengajiOne2One\Models\motodb.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
