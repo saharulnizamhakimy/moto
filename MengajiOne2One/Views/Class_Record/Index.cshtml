@@ -7,7 +7,11 @@
 <h2>Rekod Kelas</h2>
 
 <p>
-    @Html.ActionLink("Mulakan Kelas", "Create",null, new { @class="btn btn-success"  })
+    @if (User.IsInRole("Guru"))
+    {
+        @Html.ActionLink("Mulakan Kelas", "Create", null, new { @class = "btn btn-success" })
+    }
+
 </p>
 <table class="table">
     <tr>
@@ -59,13 +63,15 @@
             @Html.DisplayFor(modelItem => item.User_Record.u_name)
         </td>
         <td>
-            @if (item.c_timeEnd == null)
+            @if (item.c_timeEnd == null && User.IsInRole("Guru"))
             {
-                @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id },new { onclick = "return confirm('Adakah anda pasti?');" })
+                @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info", onclick = "return confirm('Adakah anda pasti?');" })
             }
-
-            @Html.ActionLink("Butiran", "Details", new { id = item.c_id })|
-            @Html.ActionLink("Padam", "Delete", new { id = item.c_id })
+            
+            @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
+            {
+                @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info", onclick = "return confirm('Adakah anda pasti?');" })
+            }
         </td>
     </tr>
 }

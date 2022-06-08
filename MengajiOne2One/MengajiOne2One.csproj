@@ -2255,9 +2255,7 @@
     <Content Include="Views\Salary_Record\Details.cshtml" />
     <Content Include="Views\Salary_Record\Edit.cshtml" />
     <Content Include="Views\Salary_Record\Index.cshtml" />
-    <Content Include="Views\StartStudent\_ViewStart.cshtml" />
     <Content Include="Views\StartStudent\Index.cshtml" />
-    <Content Include="Views\Shared\_StuLoginLayout.cshtml" />
     <Content Include="Views\StuProfile\Details.cshtml" />
     <Content Include="Views\StuProfile\Edit.cshtml" />
     <Content Include="Views\StuProfile\_ViewStart.cshtml" />
@@ -2266,6 +2264,7 @@
     <Content Include="Views\Class_Record\Details.cshtml" />
     <Content Include="Views\Class_Record\Edit.cshtml" />
     <Content Include="Views\Class_Record\Index.cshtml" />
+    <Content Include="Views\StartStudent\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

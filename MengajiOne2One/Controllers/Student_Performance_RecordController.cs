@@ -10,7 +10,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
-    [Authorize(Roles = "Guru")]
+    [Authorize]
     public class Student_Performance_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();

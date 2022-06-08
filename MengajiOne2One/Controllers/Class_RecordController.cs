@@ -11,6 +11,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
+    [Authorize]
     public class Class_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();
@@ -18,8 +19,22 @@ namespace MengajiOne2One.Controllers
         // GET: Class_Record
         public ActionResult Index()
         {
-            var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(s => s.Student_Record.s_teacherID == User.Identity.Name);
-            return View(class_Records.ToList());
+            if (@User.IsInRole("Guru"))
+            {
+                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_teacherID == @User.Identity.Name);
+                return View(class_Records.ToList());
+            }
+            else if (@User.IsInRole("Admin"))
+            {
+                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record);
+                return View(class_Records.ToList());
+            }
+            else
+            {
+                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_studentID == @User.Identity.Name);
+                return View(class_Records.ToList());
+            }
+            
         }
 
         // GET: Class_Record/Details/5
@@ -148,8 +163,21 @@ namespace MengajiOne2One.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult EditVerifyClass(int? id)
+        {
+            using (motodbEntities db = new motodbEntities())
+            {
+                Class_Record updateRecord = (from c in db.Class_Records
+                                             where c.c_id == id
+                                             select c).FirstOrDefault();
+                updateRecord.c_status = "TELAH DISAHKAN";
+                db.SaveChanges();
+            }
 
-        
+            return RedirectToAction("Index");
+        }
+
+
 
         // GET: Class_Record/Delete/5
         public ActionResult Delete(int? id)
