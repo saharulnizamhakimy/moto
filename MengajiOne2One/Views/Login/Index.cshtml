@@ -4,13 +4,13 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
+    
+    <div class="form-horizontal" >
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.u_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.EditorFor(model => model.u_id, new { htmlAttributes = new { @class = "form-control", maxlength = "12" } })
                 @Html.ValidationMessageFor(model => model.u_id, "", new { @class = "text-danger" })
             </div>
@@ -18,12 +18,13 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.u_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1" } })
                 @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
                 <input type="checkbox" onclick="myFunction1()">  Lihat Kata Laluan
             </div>
         </div>
+
 
 
         <script>

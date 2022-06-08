@@ -53,7 +53,7 @@ namespace MengajiOne2One.Controllers
                             FormsAuthentication.SetAuthCookie(usermodel.u_id, false);
                             Session["UserID"] = obj2.s_id.ToString();
                             Session["Username"] = obj2.s_name.ToString();
-                            return RedirectToAction("Index", "StartStudent");
+                            return RedirectToAction("Details", "StuProfile", new { id = Session["UserID"] });
 
                         }
                         else
