@@ -18,9 +18,16 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Performance_Record
         public ActionResult Index()
         {
+            if (@User.IsInRole("Guru"))
+            {
                 var student_Performance_Records = db.Student_Performance_Records.Include(s => s.Student_Record).Where(s => s.Student_Record.s_teacherID == User.Identity.Name);
                 return View(student_Performance_Records.ToList());
-                     
+            }
+            else
+            {
+                var student_Performance_Records = db.Student_Performance_Records.Include(s => s.Student_Record).Where(s => s.per_studentID == @User.Identity.Name);
+                return View(student_Performance_Records.ToList());
+            }
         }
 
         // GET: Student_Performance_Record/Details/5

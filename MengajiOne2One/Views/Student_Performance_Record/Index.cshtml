@@ -7,7 +7,11 @@
 <h2>Senarai Prestasi</h2>
 
 <p>
-    @Html.ActionLink("Tambah Prestasi", "Create")
+    @if (User.IsInRole("Guru"))
+    {
+        @Html.ActionLink("Tambah Prestasi", "Create", null, new { @class = "btn btn-success" })
+    }
+
 </p>
 @if (TempData["AlertMessage"] != null)
 {
@@ -55,9 +59,19 @@
                 @Html.DisplayFor(modelItem => item.per_desc)
             </td>
             <td>
-                @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }) |
-                @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }) |
-                @Html.ActionLink("Padam", "Delete", new { id = item.per_ID })
+                @if (@User.IsInRole("Guru"))
+                {
+                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Padam", "Delete", new { id = item.per_ID }, new { @class = "btn btn-danger" })
+                }
+
+                else
+                {
+                    @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Cetak", "Details", new { id = item.per_ID }, new { @class = "btn btn-primary" })
+                }
+
             </td>
         </tr>
     }

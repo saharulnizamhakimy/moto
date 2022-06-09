@@ -3,6 +3,8 @@
 }
 @if (User.IsInRole("Admin"))
 {
+    <h4>Data Pengguna</h4>
+
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -13,7 +15,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Pengguna
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.numUser</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.numAllUser</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user-circle fa-2x text-gray-300"></i>
@@ -79,48 +81,156 @@
                 </div>
             </div>
         </div>
-    </div>
-}
-else if (User.IsInRole("Guru"))
-{
-    <div class="row">
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Pelajar
+        </div>
+    <h4>Data Elaun</h4>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-danger shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                    Elaun Belum Diproses
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.elaunDlmProses</div>
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">X</div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Elaun Selesai Diproses
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.elaunSelesai</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Jumlah Elaun Telah Dibayar
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.elaunPaid</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Jumlah Elaun Belum Dibayar
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.elaunPending</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <h4>Data Kelas</h4>
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-danger shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                    Jumlah Kelas Belum Disahkan
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.kelasPending</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Jumlah Kelas Telah Disahkan
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.kelasVerified</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        }
+        else if (User.IsInRole("Guru"))
+        {
+        <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Jumlah Pelajar
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.studentGuru</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Jumlah Kelas
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Jumlah Kelas
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.numKelas</div>
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.numKelas</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            <div class="col-auto">
+                                <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-}
+        }
 
