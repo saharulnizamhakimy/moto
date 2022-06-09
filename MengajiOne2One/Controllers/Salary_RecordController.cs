@@ -175,7 +175,6 @@ namespace MengajiOne2One.Controllers
             }
             base.Dispose(disposing);
         }
-<<<<<<< Updated upstream
 
         [HttpPost]
         public ActionResult GetSalary(string id, string u)
@@ -201,24 +200,6 @@ namespace MengajiOne2One.Controllers
                 return Json(ex.Message);
             }
 
-=======
-        public ActionResult ViewInvoice(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-
-            var Sreport = db.Salary_Records.Include(p => p.User_Record).Include(t=>db.Class_Records).Where(a => a.Class_Records).FirstOrDefault(x => x.sal_ID == id);
-
-            //var stuPer = from p in tb_performance
-            // join s in tb_student on p.StudentID equals s.ID
-            // where p.ID == id
-            // select new stuPer (tb_performancevm = p, tb_studentvm = s);
-
-            return View(Sreport);
->>>>>>> Stashed changes
         }
     }
 }
