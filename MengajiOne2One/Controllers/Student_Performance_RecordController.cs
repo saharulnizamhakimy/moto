@@ -173,5 +173,21 @@ namespace MengajiOne2One.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult ViewReport(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var Sreport = db.Student_Performance_Records.Include(s => s.Student_Record).FirstOrDefault(x => x.per_ID == id);
+            var Creport = db.Class_Records.Include(s => s.User_Record).Where(s => s.c_studentID == Sreport.per_studentID);
+            //var stuPer = from p in tb_performance
+            // join s in tb_student on p.StudentID equals s.ID
+            // where p.ID == id
+            // select new stuPer (tb_performancevm = p, tb_studentvm = s);
+
+            return View(Tuple.Create(Sreport, Creport.ToList()));
+            }
+        }
     }
-}
