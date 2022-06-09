@@ -1,0 +1,100 @@
+﻿﻿@model MengajiOne2One.Models.Salary_Record
+@{
+    ViewBag.Title = "ViewInvoice";
+    Layout = "";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+    <script src="~/Scripts/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="row justify-content-center pb-5" style="text-align:right">
+            <div class="well col-xs-10 col-sm-10 col-md-3 ">
+                <button onclick="window.print()"><i style="font-size:24px" class="fa">&#xf02f;</i></button>
+            </div>
+        </div>
+        <h1>Invois Elaun </h1>
+        <img src="~/Theme/logo.png" width="165px" height="100px" style="text-align:left" />
+        <address>
+            <p>Mengaji One To One</p>
+            <p>+6011 - 5978 0670</p>
+            <p>No 7 Lorong Mewah 11,</p>
+            <p>Bandar Tun Razak, Cheras,</p>
+            <p>56000, Kuala Lumpur.</p>
+        </address>
+    </header>
+    <article>
+        <address>
+        </address>
+
+        <p>&nbsp;&nbsp;</p>
+        <table class="meta">
+            <tr>
+                <th><span>Nama</span></th>
+                <td><span>@Html.DisplayFor(model => model.User_Record.u_name)</span></td>
+            </tr>
+            <tr>
+                <th><span>Kod</span></th>
+                <td><span>@Html.DisplayFor(model => model.sal_teacherID)</span></td>
+            </tr>
+            <tr>
+                <th><span>No Telefon</span></th>
+                <td><span>@Html.DisplayFor(model => model.User_Record.u_contactNo)</span></td>
+            </tr>
+            <tr>
+                <th><span>Emel</span></th>
+                <td><span>@Html.DisplayFor(model => model.User_Record.u_email)</span></td>
+            </tr>
+        </table>
+        <p>&nbsp;&nbsp;</p>
+        <table class="inventory">
+            <thead>
+                <tr>
+                    <th><span>Bulan Elaun</span></th>
+                    <th><span>Tarikh Elaun</span></th>
+                    <th><span>Jumlah Elaun</span></th>
+                    <th><span>Status</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span>@Html.DisplayFor(model => model.sal_month)</span></td>
+                    <td><span>@Html.DisplayFor(model => model.sal_date)</span></td>
+                    <td><span>RM</span><span>@Html.DisplayFor(model => model.sal_amount)</span></td>
+                    <td><span>@Html.DisplayFor(model => model.sal_status)</span></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <table class="balance">
+            <tr>
+                <th><span>Jumlah</span></th>
+                <td><span data-prefix>RM</span><span>@Html.DisplayFor(model => model.sal_amount)</span></td>
+            </tr>
+
+        </table>
+
+
+    </article>
+    <aside>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <h1><span>Mengaji One To One</span></h1>
+        <div>
+            <p contenteditable>Sila Tambah Lebihan Ulasan Di Sini (Jika Ada)</p>
+        </div>
+    </aside>
+</body>
+</html>

@@ -11,7 +11,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class Salary_RecordController : Controller
     {
         private motodbEntities db = new motodbEntities();
@@ -50,7 +50,7 @@ namespace MengajiOne2One.Controllers
                 .ToList();
 
             ViewBag.sal_teacherID = new SelectList(clients, "Value", "Text");
-          
+
             return View();
         }
 
@@ -200,6 +200,23 @@ namespace MengajiOne2One.Controllers
                 return Json(ex.Message);
             }
 
+        }
+
+        public ActionResult ViewInvoice(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            var Sreport = db.Salary_Records.Include(p => p.User_Record).FirstOrDefault(x => x.sal_ID == id);
+            //var stuPer = from p in tb_performance
+            // join s in tb_student on p.StudentID equals s.ID
+            // where p.ID == id
+            // select new stuPer (tb_performancevm = p, tb_studentvm = s);
+
+            return View(Sreport);
         }
     }
 }
