@@ -7,7 +7,7 @@
     <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="c_date" Type="date" Nullable="false" />
     <Property Name="c_studentID" Type="varchar" MaxLength="12" Nullable="false" />
-    <Property Name="c_duration" Type="nvarchar" MaxLength="50" />
+    <Property Name="c_duration" Type="int" />
     <Property Name="c_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="c_timeStart" Type="nvarchar" MaxLength="50" />
     <Property Name="c_timeEnd" Type="nvarchar" MaxLength="50" />

@@ -15,9 +15,7 @@ namespace MengajiOne2One.Models
             [DisplayName("ID Elaun")]
             public int sal_ID { get; set; }
 
-            [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Amaun")]
-            [Range(0, 10000, ErrorMessage = "Amaun (RM) hendaklah sekurang kurangnya RM0.")]
             public Nullable<double> sal_amount { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]

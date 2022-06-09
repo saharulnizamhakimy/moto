@@ -7,7 +7,7 @@
     <Property Name="c_id" Type="Int32" Nullable="false" />
     <Property Name="c_date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="c_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="c_duration" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="c_duration" Type="Int32" />
     <Property Name="c_teacherID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Student_Record" Relationship="Self.FK_Class_Record_Student_Record" FromRole="Class_Record" ToRole="Student_Record" />
     <NavigationProperty Name="User_Record" Relationship="Self.FK_Class_Record_User_Record2" FromRole="Class_Record" ToRole="User_Record" />

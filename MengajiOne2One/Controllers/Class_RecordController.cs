@@ -175,7 +175,7 @@ namespace MengajiOne2One.Controllers
                 {
                     formatteddiff = 0;
                 }
-                updateRecord.c_duration = formatteddiff.ToString();
+                updateRecord.c_duration = formatteddiff;
                 db.SaveChanges();
             }
 

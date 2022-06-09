@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -40,7 +41,7 @@ namespace MengajiOne2One.Controllers
         // GET: Salary_Record/Create
         public ActionResult Create()
         {
-            var clients = db.User_Records
+            var clients = db.User_Records.Where(s => s.u_type == 2)
                 .Select(s => new
                 {
                     Text = s.u_id + " - " + s.u_name,
@@ -62,13 +63,20 @@ namespace MengajiOne2One.Controllers
         {
             if (ModelState.IsValid)
             {
+                //int month = DateTime.ParseExact(salary_Record.sal_month, "MMMM", CultureInfo.CurrentCulture).Month;
+                //var gaji = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_date.Month == month).Sum(c => c.c_duration);
+                //var rate = (from s in db.Salary_Rate where s.sr_id == 1 select s.sr_val).ToArray();
+                //double timee = 60;
+                //var salary = gaji * (rate[0]/timee);
+
+                //salary_Record.sal_amount = salary;
                 db.Salary_Records.Add(salary_Record);
                 db.SaveChanges();
                 TempData["AlertMessage"] = "Rekod berjaya disimpan.";
                 return RedirectToAction("Index");
             }
 
-            var clients = db.User_Records
+            var clients = db.User_Records.Where(s => s.u_type == 2)
                 .Select(s => new
                 {
                     Text = s.u_id + " - " + s.u_name,
@@ -94,7 +102,7 @@ namespace MengajiOne2One.Controllers
                 return HttpNotFound();
             }
 
-            var clients = db.User_Records
+            var clients = db.User_Records.Where(s => s.u_type == 2)
                .Select(s => new
                {
                    Text = s.u_id + " - " + s.u_name,
@@ -120,7 +128,15 @@ namespace MengajiOne2One.Controllers
                 TempData["AlertMessage"] = "Rekod berjaya dikemaskini.";
                 return RedirectToAction("Index");
             }
-            ViewBag.sal_teacherID = new SelectList(db.User_Records, "u_id", "u_name", salary_Record.sal_teacherID);
+            var clients = db.User_Records.Where(s => s.u_type == 2)
+               .Select(s => new
+               {
+                   Text = s.u_id + " - " + s.u_name,
+                   Value = s.u_id
+               })
+               .ToList();
+
+            ViewBag.sal_teacherID = new SelectList(clients, "Value", "Text", salary_Record.sal_teacherID);
             return View(salary_Record);
         }
 
@@ -158,6 +174,32 @@ namespace MengajiOne2One.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult GetSalary(string id, string u)
+        {
+            try
+            {
+                double total = 0;
+                var rate = (from s in db.Salary_Rate where s.sr_id == 1 select s.sr_val).ToArray();
+                int month = DateTime.ParseExact(id, "MMMM", CultureInfo.CurrentCulture).Month;
+                var hours = (from s in db.Class_Records where s.c_teacherID == u where s.c_date.Month == month where s.c_status == "TELAH DISAHKAN" select s.c_duration).ToArray();
+                for (int i = 0; i < hours.Length; i++)
+                {
+
+                    total = (double)(total + hours[i]);
+                }
+                total = total / 60;
+                var salary = total * rate[0];
+                return Json(salary, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(ex.Message);
+            }
+
         }
     }
 }

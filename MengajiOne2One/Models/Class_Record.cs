@@ -17,7 +17,7 @@ namespace MengajiOne2One.Models
         public int c_id { get; set; }
         public System.DateTime c_date { get; set; }
         public string c_studentID { get; set; }
-        public string c_duration { get; set; }
+        public Nullable<int> c_duration { get; set; }
         public string c_teacherID { get; set; }
         public string c_timeStart { get; set; }
         public string c_timeEnd { get; set; }

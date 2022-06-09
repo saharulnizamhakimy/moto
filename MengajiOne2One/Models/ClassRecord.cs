@@ -35,7 +35,7 @@ namespace MengajiOne2One.Models
             [DisplayName("Masa Kelas Berakhir")]
             public string c_timeEnd { get; set; }
             [DisplayName("Status Pengesahan Pelajar")]
-            public string c_status { get; set; } = "BELUM DISAHKAN";
+            public string c_status { get; set; }
         }
     }
 }
