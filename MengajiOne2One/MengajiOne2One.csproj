@@ -301,8 +301,10 @@
     <Compile Include="Models\Package.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PackageValidation.cs" />
     <Compile Include="Models\Performance.cs" />
     <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\SalaryRate.cs" />
     <Compile Include="Models\Salary_Rate.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>

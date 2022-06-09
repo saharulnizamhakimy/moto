@@ -10,6 +10,7 @@ using MengajiOne2One.Models;
 
 namespace MengajiOne2One.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class Salary_RateController : Controller
     {
         private motodbEntities db = new motodbEntities();

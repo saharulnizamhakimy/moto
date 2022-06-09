@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.pkg_minhour)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pkg_id }, new {@class="btn btn-warning btnStyle"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.pkg_id }, new { @class = "btn btn-info btnStyle" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pkg_id }, new { @class = "btn btn-danger btnStyle" })
+            @Html.ActionLink("Kemaskini", "Edit", new { id=item.pkg_id }, new {@class="btn btn-warning btnStyle"}) 
+            @Html.ActionLink("Butiran", "Details", new { id=item.pkg_id }, new { @class = "btn btn-info btnStyle" }) 
+            @Html.ActionLink("Padam", "Delete", new { id=item.pkg_id }, new { @class = "btn btn-danger btnStyle" })
         </td>
     </tr>
 }

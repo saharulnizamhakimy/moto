@@ -21,7 +21,7 @@ namespace MengajiOne2One.Models
         public string c_teacherID { get; set; }
         public string c_timeStart { get; set; }
         public string c_timeEnd { get; set; }
-        public string c_status { get; set; }
+        public string c_status { get; set; } = "BELUM DISAHKAN";
     
         public virtual Student_Record Student_Record { get; set; }
         public virtual User_Record User_Record { get; set; }
