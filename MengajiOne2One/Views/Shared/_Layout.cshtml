@@ -1,4 +1,15 @@
 ﻿<!DOCTYPE html>
+<style>
+h3 {
+        color: grey;
+        font-family: 'Trocchi', serif;
+        font-size: 10px;
+        font-weight: normal;
+        line-height: 10px;
+        margin: 0;
+        text-align: center;
+    }
+</style>
 <html>
 
 <head>
@@ -17,16 +28,16 @@
 
 </head>
 <body id="page-top">
-   
+
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
 
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Home/Index">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+                    <i class="fas fa-user" "></i>
                 </div>
                 @if (@User.IsInRole("Admin"))
                 {
@@ -46,8 +57,9 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
+
             <li class="nav-item active">
-                <a class="nav-link" href="~/Home/Index">
+                <a class="nav-link" href="@Url.Action("Index", "Home")">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Laman Utama</span>
                 </a>
@@ -111,8 +123,22 @@
                     <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Rekod Elaun</h6>
-                            <a class="collapse-item" href="~/Salary_Record/Index">Senarai Elaun</a>
-                            <a class="collapse-item" href="~/Salary_Record/Create">Tambah Elaun</a>
+                            <a class="collapse-item" href="~/Salary_Record/Index">Senarai Rekod Elaun</a>
+                            <a class="collapse-item" href="~/Salary_Record/Create">Tambah Rekod Elaun</a>
+                            <a class="collapse-item" href="~/Salary_Rate/Details/1">Kemaskini Kadar Elaun</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
+                       aria-expanded="true" aria-controls="collapseSix">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Rekod Pakej</span>
+                    </a>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Rekod Pakej</h6>
+                            <a class="collapse-item" href="~/Packages/Index">Senarai Pakej</a>
                         </div>
                     </div>
                 </li>
@@ -199,61 +225,66 @@
                     </button>
                     <!-- Topbar Search -->
                     <div>
-                        <h2>Mengaji One To One</h2>
+                        <h3>Mengaji One To One</h3>
 
                     </div>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                               placeholder="Search for..." aria-label="Search"
-                                               aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
 
+                        @if (User.IsInRole("Admin") || User.IsInRole("Guru"))
+                        {
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["Username"]</span>
+                                    <img class="img-profile rounded-circle"
+                                         src="~/Theme/img/undraw_profile.svg">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="~/Profile/Details/@Session["UserID"]">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profil
+                                    </a>
 
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Log Keluar
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["Username"]</span>
+                                    <img class="img-profile rounded-circle"
+                                         src="~/Theme/img/undraw_profile.svg">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="~/StuProfile/Details/@Session["UserID"]">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profil
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Log Keluar
+                                    </a>
+                                </div>
+                            </li>
+                        }
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["Username"]</span>
-                                <img class="img-profile rounded-circle"
-                                     src="~/Theme/img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="~/Profile/Details/@Session["UserID"]">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profil
-                                </a>
 
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Log Keluar
-                                </a>
-                            </div>
-                        </li>
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
@@ -300,6 +331,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <link href="~/Content/CustomCss.css" rel="stylesheet" />
     <script src="~/Theme/vendor/jquery/jquery.min.js"></script>
     <script src="~/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->

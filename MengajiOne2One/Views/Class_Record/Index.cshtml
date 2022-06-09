@@ -9,71 +9,74 @@
 <p>
     @if (User.IsInRole("Guru"))
     {
-        @Html.ActionLink("Mulakan Kelas", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Mulakan Kelas", "Create", null, new { @class = "btn btn-success btnStyle" })
     }
 
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.c_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.c_duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.c_timeStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.c_timeEnd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.c_status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Student_Record.s_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User_Record.u_name)
-        </th>
-        <th></th>
-    </tr>
+<div class=" table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.c_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.c_duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.c_timeStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.c_timeEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.c_status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student_Record.s_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Record.u_name)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.c_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.c_duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.c_timeStart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.c_timeEnd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.c_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student_Record.s_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User_Record.u_name)
-        </td>
-        <td>
-            @if (item.c_timeEnd == null && User.IsInRole("Guru"))
-            {
-                @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info", onclick = "return confirm('Adakah anda pasti?');" })
-            }
-            
-            @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
-            {
-                @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info", onclick = "return confirm('Adakah anda pasti?');" })
-            }
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.c_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.c_duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.c_timeStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.c_timeEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.c_status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_Record.s_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Record.u_name)
+                </td>
+                <td>
+                    @if (item.c_timeEnd == null && User.IsInRole("Guru"))
+                    {
+                        @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
+                    }
 
-</table>
+                    @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
+                    {
+                        @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

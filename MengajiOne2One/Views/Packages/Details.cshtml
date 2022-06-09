@@ -1,0 +1,42 @@
+﻿@model MengajiOne2One.Models.Package
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Package</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pkg_rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pkg_rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pkg_discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pkg_discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pkg_minhour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pkg_minhour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pkg_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -54,6 +54,7 @@
     <NavigationProperty Name="Class_Record" Relationship="Self.FK_Class_Record_Student_Record" FromRole="Student_Record" ToRole="Class_Record" />
     <NavigationProperty Name="Student_Performance_Record" Relationship="Self.FK_Student_Performance_Record_Student_Record" FromRole="Student_Record" ToRole="Student_Performance_Record" />
     <NavigationProperty Name="User_Record" Relationship="Self.FK_Student_Record_User_Record" FromRole="Student_Record" ToRole="User_Record" />
+    <NavigationProperty Name="Package" Relationship="motodbModel.FK_Student_Record_Package" FromRole="Student_Record" ToRole="Package" />
   </EntityType>
   <EntityType Name="User_Record">
     <Key>
@@ -181,5 +182,51 @@
       <End Role="User_Type" EntitySet="User_Types" />
       <End Role="User_Record" EntitySet="User_Records" />
     </AssociationSet>
+    <EntitySet Name="Packages" EntityType="motodbModel.Package" />
+    <EntitySet Name="sysdiagrams" EntityType="motodbModel.sysdiagram" />
+    <EntitySet Name="Salary_Rate" EntityType="motodbModel.Salary_Rate" />
+    <AssociationSet Name="FK_Student_Record_Package" Association="motodbModel.FK_Student_Record_Package">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="Student_Record" EntitySet="Student_Records" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="pkg_id" />
+    </Key>
+    <Property Name="pkg_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pkg_rate" Type="Int32" />
+    <Property Name="pkg_discount" Type="Int32" />
+    <Property Name="pkg_minhour" Type="Int32" />
+    <NavigationProperty Name="Student_Record" Relationship="motodbModel.FK_Student_Record_Package" FromRole="Package" ToRole="Student_Record" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Salary_Rate">
+    <Key>
+      <PropertyRef Name="sr_id" />
+    </Key>
+    <Property Name="sr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sr_val" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Student_Record_Package">
+    <End Type="motodbModel.Package" Role="Package" Multiplicity="0..1" />
+    <End Type="motodbModel.Student_Record" Role="Student_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="pkg_id" />
+      </Principal>
+      <Dependent Role="Student_Record">
+        <PropertyRef Name="s_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

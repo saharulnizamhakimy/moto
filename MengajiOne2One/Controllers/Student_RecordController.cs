@@ -50,6 +50,7 @@ namespace MengajiOne2One.Controllers
                 .ToList();
 
             ViewBag.s_teacherID = new SelectList(clients, "Value", "Text");
+            ViewBag.s_package = new SelectList(db.Packages, "pkg_id", "pkg_id");
             return View();
         }
 
@@ -76,6 +77,7 @@ namespace MengajiOne2One.Controllers
                 .ToList();
 
             ViewBag.s_teacherID = new SelectList(clients, "Value", "Text", student_Record.s_teacherID);
+            ViewBag.s_package = new SelectList(db.Packages, "pkg_id", "pkg_id");
             return View(student_Record);
         }
 
@@ -101,6 +103,7 @@ namespace MengajiOne2One.Controllers
                 .ToList();
 
             ViewBag.s_teacherID = new SelectList(clients, "Value", "Text", student_Record.s_teacherID);
+            ViewBag.s_package = new SelectList(db.Packages, "pkg_id", "pkg_id", student_Record.s_package);
             return View(student_Record);
         }
 
@@ -127,6 +130,7 @@ namespace MengajiOne2One.Controllers
                 .ToList();
 
             ViewBag.s_teacherID = new SelectList(clients, "Value", "Text", student_Record.s_teacherID);
+            ViewBag.s_package = new SelectList(db.Packages, "pkg_id", "pkg_id", student_Record.s_package);
             return View(student_Record);
         }
 

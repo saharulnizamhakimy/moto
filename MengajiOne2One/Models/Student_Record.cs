@@ -36,5 +36,6 @@ namespace MengajiOne2One.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student_Performance_Record> Student_Performance_Record { get; set; }
         public virtual User_Record User_Record { get; set; }
+        public virtual Package Package { get; set; }
     }
 }

@@ -13,6 +13,15 @@
     <Property Name="c_timeEnd" Type="nvarchar" MaxLength="50" />
     <Property Name="c_status" Type="nvarchar" MaxLength="15" />
   </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="pkg_id" />
+    </Key>
+    <Property Name="pkg_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pkg_rate" Type="int" />
+    <Property Name="pkg_discount" Type="int" />
+    <Property Name="pkg_minhour" Type="int" />
+  </EntityType>
   <EntityType Name="Salary Record">
     <Key>
       <PropertyRef Name="sal_ID" />
@@ -23,6 +32,13 @@
     <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="sal_month" Type="varchar" MaxLength="10" />
     <Property Name="sal_status" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Salary_Rate">
+    <Key>
+      <PropertyRef Name="sr_id" />
+    </Key>
+    <Property Name="sr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sr_val" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Student Performance Record">
     <Key>
@@ -47,6 +63,16 @@
     <Property Name="s_regDate" Type="date" Nullable="false" />
     <Property Name="s_teacherID" Type="varchar" MaxLength="12" />
     <Property Name="s_package" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="User Record">
     <Key>
@@ -114,6 +140,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Student Record_Package">
+    <End Role="Package" Type="Self.Package" Multiplicity="0..1" />
+    <End Role="Student Record" Type="Self.Student Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="pkg_id" />
+      </Principal>
+      <Dependent Role="Student Record">
+        <PropertyRef Name="s_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Student Record_User Record">
     <End Role="User Record" Type="Self.User Record" Multiplicity="0..1" />
     <End Role="Student Record" Type="Self.Student Record" Multiplicity="*" />
@@ -140,9 +178,12 @@
   </Association>
   <EntityContainer Name="motodbModelStoreContainer">
     <EntitySet Name="Class Record" EntityType="Self.Class Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Salary Record" EntityType="Self.Salary Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salary_Rate" EntityType="Self.Salary_Rate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student Performance Record" EntityType="Self.Student Performance Record" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student Record" EntityType="Self.Student Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User Record" EntityType="Self.User Record" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User Type" EntityType="Self.User Type" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Class Record_Student Record" Association="Self.FK_Class Record_Student Record">
@@ -160,6 +201,10 @@
     <AssociationSet Name="FK_Student Performance Record_Student Record" Association="Self.FK_Student Performance Record_Student Record">
       <End Role="Student Record" EntitySet="Student Record" />
       <End Role="Student Performance Record" EntitySet="Student Performance Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student Record_Package" Association="Self.FK_Student Record_Package">
+      <End Role="Package" EntitySet="Package" />
+      <End Role="Student Record" EntitySet="Student Record" />
     </AssociationSet>
     <AssociationSet Name="FK_Student Record_User Record" Association="Self.FK_Student Record_User Record">
       <End Role="User Record" EntitySet="User Record" />

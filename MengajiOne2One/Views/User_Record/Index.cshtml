@@ -7,7 +7,7 @@
 <h2>Senarai Pengguna</h2>
 
 <p>
-    @Html.ActionLink("Tambah Pengguna", "Create")
+    @Html.ActionLink("Tambah Pengguna", "Create", null, new { @class = "btn btn-success btnStyle" })
 </p>
 @if (TempData["AlertMessage"] != null)
 {
@@ -56,9 +56,9 @@
                     @Html.DisplayFor(modelItem => item.User_Type.t_desc)
                 </td>
                 <td>
-                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.u_id }) |
-                    @Html.ActionLink("Butiran", "Details", new { id = item.u_id }) |
-                    @Html.ActionLink("Padam", "Delete", new { id = item.u_id })
+                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.u_id }, new { @class = "btn btn-warning btnStyle" })
+                    @Html.ActionLink("Butiran", "Details", new { id = item.u_id }, new { @class = "btn btn-info btnStyle" })
+                    @Html.ActionLink("Padam", "Delete", new { id = item.u_id }, new { @class = "btn btn-danger btnStyle" })
                 </td>
             </tr>
 

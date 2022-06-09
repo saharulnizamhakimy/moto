@@ -31,5 +31,8 @@ namespace MengajiOne2One.Models
         public virtual DbSet<Student_Record> Student_Records { get; set; }
         public virtual DbSet<User_Record> User_Records { get; set; }
         public virtual DbSet<User_Type> User_Types { get; set; }
+        public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Salary_Rate> Salary_Rate { get; set; }
     }
 }

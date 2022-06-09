@@ -157,27 +157,25 @@ namespace MengajiOne2One.Controllers
                 var timeEnd = Convert.ToDateTime(now);
                 var timeStart= Convert.ToDateTime(updateRecord.c_timeStart);
                 var diff = timeEnd - timeStart;
-                if (diff.TotalMinutes >= 30)
+                var formatteddiff = (int)diff.TotalMinutes;
+
+                if (formatteddiff >= 90)
                 {
-                    TimeSpan time = TimeSpan.FromMinutes(30);
-                    diff = time;
+                    formatteddiff = 90;
                 }
-                else if (diff.TotalMinutes >= 60)
+                else if (formatteddiff >= 60)
                 {
-                    TimeSpan time = TimeSpan.FromMinutes(60);
-                    diff = time;
+                    formatteddiff = 60;
                 }
-                else if (diff.TotalMinutes >= 90)
+                else if (formatteddiff >= 30)
                 {
-                    TimeSpan time = TimeSpan.FromMinutes(90);
-                    diff = time;
+                    formatteddiff = 30;
                 }
                 else
                 {
-                    TimeSpan time = TimeSpan.FromMinutes(0);
-                    diff = time;
+                    formatteddiff = 0;
                 }
-                updateRecord.c_duration = diff.ToString();
+                updateRecord.c_duration = formatteddiff.ToString();
                 db.SaveChanges();
             }
 

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MengajiOne2One.Models.Package>
+
+@{
+    ViewBag.Title = "Senarai Pakej";
+}
+
+<h2>Senarai Pakej</h2>
+
+<p>
+    @Html.ActionLink("Tambah Pakej", "Create", null, new { @class = "btn btn-success btnStyle" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pkg_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pkg_rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pkg_discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pkg_minhour)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pkg_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pkg_rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pkg_discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pkg_minhour)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pkg_id }, new {@class="btn btn-warning btnStyle"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.pkg_id }, new { @class = "btn btn-info btnStyle" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pkg_id }, new { @class = "btn btn-danger btnStyle" })
+        </td>
+    </tr>
+}
+
+</table>

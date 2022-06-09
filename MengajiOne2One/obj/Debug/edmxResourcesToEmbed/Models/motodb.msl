@@ -73,5 +73,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="motodbModel.Package">
+        <MappingFragment StoreEntitySet="Package">
+          <ScalarProperty Name="pkg_minhour" ColumnName="pkg_minhour" />
+          <ScalarProperty Name="pkg_discount" ColumnName="pkg_discount" />
+          <ScalarProperty Name="pkg_rate" ColumnName="pkg_rate" />
+          <ScalarProperty Name="pkg_id" ColumnName="pkg_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="motodbModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salary_Rate">
+      <EntityTypeMapping TypeName="motodbModel.Salary_Rate">
+        <MappingFragment StoreEntitySet="Salary_Rate">
+          <ScalarProperty Name="sr_val" ColumnName="sr_val" />
+          <ScalarProperty Name="sr_id" ColumnName="sr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

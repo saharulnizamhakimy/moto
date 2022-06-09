@@ -17,6 +17,10 @@
         <AssociationConnector Association="motodbModel.FK_Student_Performance_Record_Student_Record" ManuallyRouted="false" />
         <AssociationConnector Association="motodbModel.FK_Student_Record_User_Record" ManuallyRouted="false" />
         <AssociationConnector Association="motodbModel.FK_User_Record_User_Type" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="motodbModel.Package" Width="1.5" PointX="12.375" PointY="5.75" />
+        <EntityTypeShape EntityType="motodbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="motodbModel.Salary_Rate" Width="1.5" PointX="12.5" PointY="4" />
+        <AssociationConnector Association="motodbModel.FK_Student_Record_Package" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

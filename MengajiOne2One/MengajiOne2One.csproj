@@ -266,6 +266,8 @@
     <Compile Include="Controllers\Class_RecordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
+    <Compile Include="Controllers\Salary_RateController.cs" />
     <Compile Include="Controllers\StuProfileController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\Salary_RecordController.cs" />
@@ -296,8 +298,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>motodb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Package.cs">
+      <DependentUpon>motodb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Performance.cs" />
     <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\Salary_Rate.cs">
+      <DependentUpon>motodb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Salary_Record.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
@@ -306,6 +314,9 @@
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student_Record.cs">
+      <DependentUpon>motodb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRecordNaming.cs" />
@@ -324,6 +335,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomCss.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2258,13 +2270,22 @@
     <Content Include="Views\StartStudent\Index.cshtml" />
     <Content Include="Views\StuProfile\Details.cshtml" />
     <Content Include="Views\StuProfile\Edit.cshtml" />
-    <Content Include="Views\StuProfile\_ViewStart.cshtml" />
     <Content Include="Views\Class_Record\Create.cshtml" />
     <Content Include="Views\Class_Record\Delete.cshtml" />
     <Content Include="Views\Class_Record\Details.cshtml" />
     <Content Include="Views\Class_Record\Edit.cshtml" />
     <Content Include="Views\Class_Record\Index.cshtml" />
     <Content Include="Views\StartStudent\_ViewStart.cshtml" />
+    <Content Include="Views\Packages\Create.cshtml" />
+    <Content Include="Views\Packages\Delete.cshtml" />
+    <Content Include="Views\Packages\Details.cshtml" />
+    <Content Include="Views\Packages\Edit.cshtml" />
+    <Content Include="Views\Packages\Index.cshtml" />
+    <Content Include="Views\Salary_Rate\Create.cshtml" />
+    <Content Include="Views\Salary_Rate\Delete.cshtml" />
+    <Content Include="Views\Salary_Rate\Details.cshtml" />
+    <Content Include="Views\Salary_Rate\Edit.cshtml" />
+    <Content Include="Views\Salary_Rate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

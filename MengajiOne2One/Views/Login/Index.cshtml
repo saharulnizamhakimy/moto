@@ -1,57 +1,88 @@
 ﻿@model MengajiOne2One.Models.User_Record
 
+<style>
+    h3 {
+        color: white;
+        font-family: 'Trocchi', serif;
+        font-size: 45px;
+        font-weight: normal;
+        line-height: 30px;
+        margin: 0;
+        text-align: center;
+    }
+</style>
+<body style="background-color: #B6A588;">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal" >
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.u_id, new { htmlAttributes = new { @class = "form-control", maxlength = "12" } })
-                @Html.ValidationMessageFor(model => model.u_id, "", new { @class = "text-danger" })
+    @using (Html.BeginForm())
+    {
+        <div style="background-color: #B6A588;">
+            @Html.AntiForgeryToken()
+            <br />
+            <h3>Mengaji One To One Management System</h3>
+            <br />
+            <div class="form-horizontal card" style="padding-right:0px">
+                <br />
+                <div class="row">
+                    <br />
+                    <div class="col-md-11">
+                        <br />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.u_id, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.u_id, new { htmlAttributes = new { @class = "form-control", maxlength = "12" } })
+                                @Html.ValidationMessageFor(model => model.u_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.u_pwd, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1" } })
+                                @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
+                                <input type="checkbox" onclick="myFunction1()">  Lihat Kata Laluan
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="submit" value="Log Masuk" class="btn btn-primary" ; />
+                            </div>
+                        </div>
+                    </div>
+                    <!--Logo-->
+                    <div class=" col-md-1">
+                        <img src="~/Theme/logo.png" alt="Logo" style="width:400px;height:250px;" align="right">
+
+                    </div>
+
+                </div>
+
+
+
+
+                <script>
+
+                    function myFunction1() {
+                        var x = document.getElementById("pwd1");
+                        if (x.type === "password") {
+                            x.type = "text";
+                        } else {
+                            x.type = "password";
+                        }
+                    }
+                </script>
+
+
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1" } })
-                @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
-                <input type="checkbox" onclick="myFunction1()">  Lihat Kata Laluan
-            </div>
-        </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/jquery.validate.min.js")
+        @Scripts.Render("~/Scripts/jquery.validate.unobstrusive.min.js")
+    }
 
-
-
-        <script>
-
-            function myFunction1() {
-                var x = document.getElementById("pwd1");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-        </script>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Log Masuk" class="btn btn-primary" ; />
-            </div>
-        </div>
-    </div>
-}
-<div>
-    @Html.ActionLink("Kembali", "Index", "StartPage")
-</div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/jquery.validate.min.js")
-    @Scripts.Render("~/Scripts/jquery.validate.unobstrusive.min.js")
-}
+</body>

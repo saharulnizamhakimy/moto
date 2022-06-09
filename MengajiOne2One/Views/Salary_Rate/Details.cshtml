@@ -1,0 +1,23 @@
+﻿@model MengajiOne2One.Models.Salary_Rate
+
+@{
+    ViewBag.Title = "Butiran Kadar Elaun";
+}
+
+<h2>Butiran Kadar Elaun</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sr_val)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.sr_val, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Kemaskini", "Edit", new { id = 1 })
+</p>

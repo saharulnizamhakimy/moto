@@ -47,6 +47,7 @@ namespace MengajiOne2One.Models
             [DisplayName("Nama Tutor")]
             public string s_teacherID { get; set; }
 
+            [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Pakej")]
             public string s_package { get; set; }
         }
