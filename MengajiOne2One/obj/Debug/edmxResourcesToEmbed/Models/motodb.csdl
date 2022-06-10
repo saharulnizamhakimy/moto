@@ -26,6 +26,7 @@
     <Property Name="sal_month" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="User_Record" Relationship="Self.FK_Salary_Record_User_Record" FromRole="Salary_Record" ToRole="User_Record" />
     <Property Name="sal_status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="sal_year" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Student_Performance_Record">
     <Key>
@@ -183,7 +184,6 @@
       <End Role="User_Record" EntitySet="User_Records" />
     </AssociationSet>
     <EntitySet Name="Packages" EntityType="motodbModel.Package" />
-    <EntitySet Name="sysdiagrams" EntityType="motodbModel.sysdiagram" />
     <EntitySet Name="Salary_Rate" EntityType="motodbModel.Salary_Rate" />
     <AssociationSet Name="FK_Student_Record_Package" Association="motodbModel.FK_Student_Record_Package">
       <End Role="Package" EntitySet="Packages" />
@@ -199,16 +199,6 @@
     <Property Name="pkg_discount" Type="Int32" />
     <Property Name="pkg_minhour" Type="Int32" />
     <NavigationProperty Name="Student_Record" Relationship="motodbModel.FK_Student_Record_Package" FromRole="Package" ToRole="Student_Record" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Salary_Rate">
     <Key>

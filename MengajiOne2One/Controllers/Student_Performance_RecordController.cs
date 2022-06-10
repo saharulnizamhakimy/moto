@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -181,7 +182,47 @@ namespace MengajiOne2One.Controllers
             }
 
             var Sreport = db.Student_Performance_Records.Include(s => s.Student_Record).FirstOrDefault(x => x.per_ID == id);
-            var Creport = db.Class_Records.Include(s => s.User_Record).Where(s => s.c_studentID == Sreport.per_studentID);
+            var mnt = Sreport.per_month;
+            if (mnt == "Januari")
+            {
+                mnt = "January";
+            }
+            else if (mnt == "Februari")
+            {
+                mnt = "February";
+            }
+            else if (mnt == "Mac")
+            {
+                mnt = "March";
+            }
+            else if (mnt == "Mei")
+            {
+                mnt = "May";
+            }
+            else if (mnt == "Jun")
+            {
+                mnt = "June";
+            }
+            else if (mnt == "Julai")
+            {
+                mnt = "July";
+            }
+            else if (mnt == "Ogos")
+            {
+                mnt = "August";
+            }
+            else if (mnt == "Oktober")
+            {
+                mnt = "October";
+            }
+            else if (mnt == "Disember")
+            {
+                mnt = "December";
+            }
+
+            int month = DateTime.ParseExact(mnt, "MMMM", CultureInfo.CurrentCulture).Month;
+            var year = Sreport.per_date.Year;
+            var Creport = db.Class_Records.Include(s => s.User_Record).Where(s => s.c_studentID == Sreport.per_studentID).Where(c=>c.c_date.Month == month).Where(c => c.c_date.Year == year).Where(c => c.c_status == "TELAH DISAHKAN");
             //var stuPer = from p in tb_performance
             // join s in tb_student on p.StudentID equals s.ID
             // where p.ID == id

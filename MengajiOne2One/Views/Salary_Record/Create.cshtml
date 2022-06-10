@@ -10,71 +10,85 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group" style="display:none">
-            @Html.LabelFor(model => model.sal_date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.sal_date, new { @Value = @DateTime.Now.ToShortDateString(), htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sal_date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.sal_teacherID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("sal_teacherID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.sal_teacherID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.sal_month, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("sal_month", new List<SelectListItem>{
-                           new SelectListItem{ Text="Januari", Value = "January" },
-                           new SelectListItem{ Text="Februari", Value = "February" },
-                           new SelectListItem{ Text="Mac", Value = "March" },
-                           new SelectListItem{ Text="April", Value = "April" },
-                           new SelectListItem{ Text="Mei", Value = "May" },
-                           new SelectListItem{ Text="Jun", Value = "June" },
-                           new SelectListItem{ Text="Julai", Value = "July" },
-                           new SelectListItem{ Text="Ogos", Value = "August" },
-                           new SelectListItem{ Text="September", Value = "September" },
-                           new SelectListItem{ Text="Oktober", Value = "October" },
-                           new SelectListItem{ Text="November", Value = "November" },
-                           new SelectListItem{ Text="Disember", Value = "December" }}, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.sal_month, "", new { @class = "text-danger" })
-
-            </div>
-        </div>
-
-
-        <div class="form-group">
-                @Html.LabelFor(model => model.sal_amount, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.sal_amount, new { htmlAttributes = new { @class = "form-control", @readonly="true" } })
-                    @Html.ValidationMessageFor(model => model.sal_amount, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.sal_status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("sal_status", new List<SelectListItem>{
-                           new SelectListItem{ Text="Dalam Proses", Value = "Dalam Proses" },
-                           new SelectListItem{ Text="Selesai", Value = "Selesai" }}, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.sal_status, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Tambah" class="btn btn-success" />
-            </div>
+    <div class="form-group" style="display:none">
+        @Html.LabelFor(model => model.sal_date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.sal_date, new { @Value = @DateTime.Now.ToShortDateString(), htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sal_date, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_teacherID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_teacherID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_teacherID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @{ var i = @DateTime.Now.Year;}
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_year, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_year", new List<SelectListItem>{
+                       new SelectListItem{ Text=(@i-1).ToString(), Value = (@i-1).ToString() },
+                       new SelectListItem{ Text=@i.ToString(), Value = @i.ToString() },
+                       new SelectListItem{ Text=(@i+1).ToString(), Value = (@i+1).ToString() },
+                       new SelectListItem{ Text=(@i+2).ToString(), Value = (@i+2).ToString() }}, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_year, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_month, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_month", new List<SelectListItem>{
+                       new SelectListItem{ Text="Januari", Value = "Januari" },
+                       new SelectListItem{ Text="Februari", Value = "Februari" },
+                       new SelectListItem{ Text="Mac", Value = "Mac" },
+                       new SelectListItem{ Text="April", Value = "April" },
+                       new SelectListItem{ Text="Mei", Value = "May" },
+                       new SelectListItem{ Text="Jun", Value = "Jun" },
+                       new SelectListItem{ Text="Julai", Value = "Julai" },
+                       new SelectListItem{ Text="Ogos", Value = "Ogos" },
+                       new SelectListItem{ Text="September", Value = "September" },
+                       new SelectListItem{ Text="Oktober", Value = "Oktober" },
+                       new SelectListItem{ Text="November", Value = "November" },
+                       new SelectListItem{ Text="Disember", Value = "Disember" }}, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_month, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_amount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sal_amount, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+            @Html.ValidationMessageFor(model => model.sal_amount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.sal_status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("sal_status", new List<SelectListItem>{
+                       new SelectListItem{ Text="Dalam Proses", Value = "Dalam Proses" },
+                       new SelectListItem{ Text="Selesai", Value = "Selesai" }}, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sal_status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Tambah" class="btn btn-success" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
@@ -93,7 +107,7 @@
                 $.ajax({
 
                     type: 'POST',
-                    url: '/Salary_Record/GetSalary?id=' + $("#sal_month").val() + '&u=' + $("#sal_teacherID").val(),
+                    url: '/Salary_Record/GetSalary?id=' + $("#sal_month").val() + '&u=' + $("#sal_teacherID").val() + '&y=' + $("#sal_year").val(),
                     dataType: 'JSON',
                     success: function (data) {
                         $("#sal_amount").val(data)
@@ -110,7 +124,24 @@
                 $.ajax({
 
                     type: 'POST',
-                    url: '/Salary_Record/GetSalary?id=' + $("#sal_month").val() + '&u=' + $("#sal_teacherID").val(),
+                    url: '/Salary_Record/GetSalary?id=' + $("#sal_month").val() + '&u=' + $("#sal_teacherID").val() + '&y=' + $("#sal_year").val(),
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $("#sal_amount").val(data)
+
+                    }
+                });
+            });
+
+        }
+        getSalary3();
+        function getSalary3() {
+            $("#sal_year").change(function (e) {
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '/Salary_Record/GetSalary?id=' + $("#sal_month").val() + '&u=' + $("#sal_teacherID").val() + '&y=' + $("#sal_year").val(),
                     dataType: 'JSON',
                     success: function (data) {
                         $("#sal_amount").val(data)

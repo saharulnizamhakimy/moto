@@ -318,9 +318,6 @@
     <Compile Include="Models\Student_Record.cs">
       <DependentUpon>motodb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>motodb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserRecordNaming.cs" />
     <Compile Include="Models\UserTypeValidation.cs" />
     <Compile Include="Models\User_Record.cs">

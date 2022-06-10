@@ -30,6 +30,9 @@ namespace MengajiOne2One.Models
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Bulan Elaun")]
             public string sal_month { get; set; }
+            [Required(ErrorMessage = "Ruangan ini perlu diisi")]
+            [DisplayName("Tahun Elaun")]
+            public string sal_year { get; set; }
 
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Status")]

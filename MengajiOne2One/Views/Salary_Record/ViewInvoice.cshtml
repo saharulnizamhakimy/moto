@@ -1,4 +1,4 @@
-﻿﻿@model MengajiOne2One.Models.Salary_Record
+﻿@model Tuple<MengajiOne2One.Models.Salary_Record, List<MengajiOne2One.Models.Class_Record>>
 @{
     ViewBag.Title = "ViewInvoice";
     Layout = "";
@@ -37,19 +37,19 @@
         <table class="meta">
             <tr>
                 <th><span>Nama</span></th>
-                <td><span>@Html.DisplayFor(model => model.User_Record.u_name)</span></td>
+                <td><span>@Html.DisplayFor(model => model.Item1.User_Record.u_name)</span></td>
             </tr>
             <tr>
                 <th><span>Kod</span></th>
-                <td><span>@Html.DisplayFor(model => model.sal_teacherID)</span></td>
+                <td><span>@Html.DisplayFor(model => model.Item1.sal_teacherID)</span></td>
             </tr>
             <tr>
                 <th><span>No Telefon</span></th>
-                <td><span>@Html.DisplayFor(model => model.User_Record.u_contactNo)</span></td>
+                <td><span>@Html.DisplayFor(model => model.Item1.User_Record.u_contactNo)</span></td>
             </tr>
             <tr>
                 <th><span>Emel</span></th>
-                <td><span>@Html.DisplayFor(model => model.User_Record.u_email)</span></td>
+                <td><span>@Html.DisplayFor(model => model.Item1.User_Record.u_email)</span></td>
             </tr>
         </table>
         <p>&nbsp;&nbsp;</p>
@@ -64,10 +64,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><span>@Html.DisplayFor(model => model.sal_month)</span></td>
-                    <td><span>@Html.DisplayFor(model => model.sal_date)</span></td>
-                    <td><span>RM</span><span>@Html.DisplayFor(model => model.sal_amount)</span></td>
-                    <td><span>@Html.DisplayFor(model => model.sal_status)</span></td>
+                    <td><span>@Html.DisplayFor(model => model.Item1.sal_month)</span></td>
+                    <td><span>@Html.DisplayFor(model => model.Item1.sal_date)</span></td>
+                    <td><span>RM</span><span>@Html.DisplayFor(model => model.Item1.sal_amount)</span></td>
+                    <td><span>@Html.DisplayFor(model => model.Item1.sal_status)</span></td>
 
                 </tr>
             </tbody>
@@ -75,7 +75,7 @@
         <table class="balance">
             <tr>
                 <th><span>Jumlah</span></th>
-                <td><span data-prefix>RM</span><span>@Html.DisplayFor(model => model.sal_amount)</span></td>
+                <td><span data-prefix>RM</span><span>@Html.DisplayFor(model => model.Item1.sal_amount)</span></td>
             </tr>
 
         </table>

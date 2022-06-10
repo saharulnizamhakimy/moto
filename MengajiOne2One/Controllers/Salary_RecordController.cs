@@ -59,7 +59,7 @@ namespace MengajiOne2One.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "sal_ID,sal_amount,sal_date,sal_teacherID,sal_month,sal_status")] Salary_Record salary_Record)
+        public ActionResult Create([Bind(Include = "sal_ID,sal_amount,sal_date,sal_teacherID,sal_month,sal_year,sal_status")] Salary_Record salary_Record)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +119,7 @@ namespace MengajiOne2One.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "sal_ID,sal_amount,sal_date,sal_teacherID,sal_month,sal_status")] Salary_Record salary_Record)
+        public ActionResult Edit([Bind(Include = "sal_ID,sal_amount,sal_date,sal_teacherID,sal_month,sal_year,sal_status")] Salary_Record salary_Record)
         {
             if (ModelState.IsValid)
             {
@@ -177,14 +177,51 @@ namespace MengajiOne2One.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetSalary(string id, string u)
+        public ActionResult GetSalary(string id, string u, string y)
         {
             try
             {
                 double total = 0;
                 var rate = (from s in db.Salary_Rate where s.sr_id == 1 select s.sr_val).ToArray();
+                if(id=="Januari")
+                {
+                    id = "January";
+                }
+                else if (id == "Februari")
+                {
+                    id = "February";
+                }
+                else if (id == "Mac")
+                {
+                    id = "March";
+                }
+                else if (id == "Mei")
+                {
+                    id = "May";
+                }
+                else if (id == "Jun")
+                {
+                    id = "June";
+                }
+                else if (id == "Julai")
+                {
+                    id = "July";
+                }
+                else if (id == "Ogos")
+                {
+                    id = "August";
+                }
+                else if (id == "Oktober")
+                {
+                    id = "October";
+                }
+                else if (id == "Disember")
+                {
+                    id = "December";
+                }
                 int month = DateTime.ParseExact(id, "MMMM", CultureInfo.CurrentCulture).Month;
-                var hours = (from s in db.Class_Records where s.c_teacherID == u where s.c_date.Month == month where s.c_status == "TELAH DISAHKAN" select s.c_duration).ToArray();
+                int year = Int32.Parse(y);
+                var hours = (from s in db.Class_Records where s.c_teacherID == u where s.c_date.Month == month where s.c_date.Year == year where s.c_status == "TELAH DISAHKAN" select s.c_duration).ToArray();
                 for (int i = 0; i < hours.Length; i++)
                 {
 
@@ -209,14 +246,53 @@ namespace MengajiOne2One.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-
             var Sreport = db.Salary_Records.Include(p => p.User_Record).FirstOrDefault(x => x.sal_ID == id);
+            var mnt = Sreport.sal_month;
+            if (mnt == "Januari")
+            {
+                mnt = "January";
+            }
+            else if (mnt == "Februari")
+            {
+                mnt = "February";
+            }
+            else if (mnt == "Mac")
+            {
+                mnt = "March";
+            }
+            else if (mnt == "Mei")
+            {
+                mnt = "May";
+            }
+            else if (mnt == "Jun")
+            {
+                mnt = "June";
+            }
+            else if (mnt == "Julai")
+            {
+                mnt = "July";
+            }
+            else if (mnt == "Ogos")
+            {
+                mnt = "August";
+            }
+            else if (mnt == "Oktober")
+            {
+                mnt = "October";
+            }
+            else if (mnt == "Disember")
+            {
+                mnt = "December";
+            }
+            int month = DateTime.ParseExact(mnt, "MMMM", CultureInfo.CurrentCulture).Month;
+            int year = Int32.Parse(Sreport.sal_year);
+            var Creport = db.Class_Records.Include(s => s.User_Record).Where(s => s.c_teacherID == Sreport.sal_teacherID).Where(c => c.c_date.Month == month).Where(c => c.c_date.Year == year).Where(c => c.c_status == "TELAH DISAHKAN");
             //var stuPer = from p in tb_performance
             // join s in tb_student on p.StudentID equals s.ID
             // where p.ID == id
             // select new stuPer (tb_performancevm = p, tb_studentvm = s);
 
-            return View(Sreport);
+            return View(Tuple.Create(Sreport, Creport.ToList()));
         }
     }
 }

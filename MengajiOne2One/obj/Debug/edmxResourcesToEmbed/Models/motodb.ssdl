@@ -31,6 +31,7 @@
     <Property Name="sal_date" Type="date" Nullable="false" />
     <Property Name="sal_teacherID" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="sal_month" Type="varchar" MaxLength="10" />
+    <Property Name="sal_year" Type="varchar" MaxLength="5" />
     <Property Name="sal_status" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="Salary_Rate">
@@ -63,16 +64,6 @@
     <Property Name="s_regDate" Type="date" Nullable="false" />
     <Property Name="s_teacherID" Type="varchar" MaxLength="12" />
     <Property Name="s_package" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="User Record">
     <Key>
@@ -183,7 +174,6 @@
     <EntitySet Name="Salary_Rate" EntityType="Self.Salary_Rate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student Performance Record" EntityType="Self.Student Performance Record" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student Record" EntityType="Self.Student Record" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User Record" EntityType="Self.User Record" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User Type" EntityType="Self.User Type" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Class Record_Student Record" Association="Self.FK_Class Record_Student Record">

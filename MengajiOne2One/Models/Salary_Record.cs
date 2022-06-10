@@ -19,7 +19,8 @@ namespace MengajiOne2One.Models
         public System.DateTime sal_date { get; set; }
         public string sal_teacherID { get; set; }
         public string sal_month { get; set; }
-        public string sal_status { get; set; } = "DALAM PROSES";
+        public string sal_status { get; set; }
+        public string sal_year { get; set; }
     
         public virtual User_Record User_Record { get; set; }
     }
