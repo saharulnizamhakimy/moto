@@ -35,7 +35,7 @@ h3 {
 
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-user" "></i>
                 </div>
@@ -59,27 +59,27 @@ h3 {
             <!-- Nav Item - Dashboard -->
             @if (@User.IsInRole("Admin"))
             {
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index", "Home")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Laman Utama</span>
-                </a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Laman Utama</span>
+                    </a>
+                </li>
             }
             else if (@User.IsInRole("Guru"))
             {
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index", "Home")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Laman Utama</span>
-                </a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Laman Utama</span>
+                    </a>
+                </li>
             }
             else
             {
             }
 
-          
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -146,6 +146,19 @@ h3 {
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven"
+                       aria-expanded="true" aria-controls="collapseSeven">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Rekod Bayaran</span>
+                    </a>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Rekod Pengguna</h6>
+                            <a class="collapse-item" href="~/Student_Performance_Record/Index">Senarai Pengguna</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
                        aria-expanded="true" aria-controls="collapseSix">
                         <i class="far fa-newspaper"></i>
@@ -158,6 +171,7 @@ h3 {
                         </div>
                     </div>
                 </li>
+
             }
             else if (User.IsInRole("Guru"))
             {
