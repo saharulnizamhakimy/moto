@@ -23,7 +23,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.s_name)
+            @Html.EditorFor(model => model.s_name, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.s_age)
+            @Html.EditorFor(model => model.s_age, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.s_address)
+            @Html.EditorFor(model => model.s_address, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -47,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.s_contactNo)
+            @Html.EditorFor(model => model.s_contactNo, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -55,7 +55,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.s_regDate)
+            @Html.TextBoxFor(model => model.s_regDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = "true" })
         </dd>
 
         <dt>
@@ -63,7 +63,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.s_package)
+            @Html.EditorFor(model => model.s_package, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -71,7 +71,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User_Record.u_name)
+            @Html.EditorFor(model => model.User_Record.u_name, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
     </dl>

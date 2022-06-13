@@ -22,6 +22,7 @@ namespace MengajiOne2One.Controllers
                 var numAllUser = numUser + numStudent;
                 var elaunDlmProses = db.Salary_Records.Where(a => a.sal_status == "Dalam Proses").Count();
                 var elaunSelesai = db.Salary_Records.Where(a => a.sal_status == "Selesai").Count();
+
                 var elaunPaid = db.Salary_Records.Where(a => a.sal_status == "Selesai").Sum(a => a.sal_amount);
                 var elaunPending = db.Salary_Records.Where(a => a.sal_status == "Dalam Proses").Sum(a => a.sal_amount);
                 var kelasPending = db.Class_Records.Where(a => a.c_status == "BELUM DISAHKAN").Count();

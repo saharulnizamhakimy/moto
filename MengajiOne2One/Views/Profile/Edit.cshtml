@@ -19,7 +19,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.u_name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.u_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.u_name, new { htmlAttributes = new { @class = "form-control", maxlength = "100" } })
             @Html.ValidationMessageFor(model => model.u_name, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.u_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1" } })
+            @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1", maxlength = "20" } })
             @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
             <input type="checkbox" onclick="myFunction1()">  Lihat Kata Laluan
         </div>
@@ -83,7 +83,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.u_contactNo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.u_contactNo, new { htmlAttributes = new { @class = "form-control", maxlength = "12" } })
+            @Html.EditorFor(model => model.u_contactNo, new { htmlAttributes = new { @class = "form-control", maxlength = "15" } })
             @Html.ValidationMessageFor(model => model.u_contactNo, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -91,7 +91,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.u_email, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control", maxlength = "50" } })
             @Html.ValidationMessageFor(model => model.u_email, "", new { @class = "text-danger" })
         </div>
     </div>

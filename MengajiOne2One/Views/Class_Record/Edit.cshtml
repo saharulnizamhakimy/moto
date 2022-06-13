@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.c_timeStart, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.c_timeStart, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.c_timeStart, new { htmlAttributes = new { @class = "form-control", maxlength = "50" } })
                 @Html.ValidationMessageFor(model => model.c_timeStart, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.c_timeEnd, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.c_timeEnd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.c_timeEnd, new { htmlAttributes = new { @class = "form-control", maxlength = "50" } })
                 @Html.ValidationMessageFor(model => model.c_timeEnd, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.c_status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.c_status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.c_status, new { htmlAttributes = new { @class = "form-control", maxlength = "15" } })
                 @Html.ValidationMessageFor(model => model.c_status, "", new { @class = "text-danger" })
             </div>
         </div>

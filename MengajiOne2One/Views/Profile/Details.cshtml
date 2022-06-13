@@ -21,7 +21,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.u_name)
+            @Html.EditorFor(model => model.u_name, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -29,7 +29,7 @@
         </dt>
 
         <dd>
-            @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
+            @Html.TextBoxFor(model => model.u_pwd, new { @class = "form-control", type = "password", @readonly="true" })
         </dd>
 
         <dt>
@@ -37,7 +37,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.u_contactNo)
+            @Html.EditorFor(model => model.u_contactNo, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -45,7 +45,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.u_email)
+            @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -53,7 +53,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User_Type.t_desc)
+            @Html.EditorFor(model => model.User_Type.t_desc, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
     </dl>
