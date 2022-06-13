@@ -3,8 +3,15 @@
 @{
     ViewBag.Title = "Senarai Prestasi";
 }
+@if (User.IsInRole("Guru"))
+{
+    <h2>Senarai Prestasi</h2>
+}
+else
+{
+    <h2>Senarai Bayaran</h2>
+}
 
-<h2>Senarai Prestasi</h2>
 
 <p>
     @if (User.IsInRole("Guru"))
@@ -21,63 +28,104 @@
 
 }
 <div class="table-responsive">
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Student_Record.s_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Student_Record.s_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.per_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.per_month)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.per_desc)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student_Record.s_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student_Record.s_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.per_date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.per_month)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.per_desc)
-            </td>
-            <td>
+            <th>
+                @Html.DisplayNameFor(model => model.Student_Record.s_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student_Record.s_name)
+            </th>
+            @if (@User.IsInRole("Guru"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.per_date)
+                </th>
+            }
+
+            <th>
+                @Html.DisplayNameFor(model => model.per_year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.per_month)
+            </th>
+            @if (@User.IsInRole("Guru"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.per_desc)
+                </th>
+            }
+
+            @if (@User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.per_amaunt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.per_status)
+                </th>
+            }
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_Record.s_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_Record.s_name)
+                </td>
                 @if (@User.IsInRole("Guru"))
                 {
-                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }, new { @class = "btn btn-warning btnStyle" })
-                    @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
-                    @Html.ActionLink("Padam", "Delete", new { id = item.per_ID }, new { @class = "btn btn-danger btnStyle" })
-                    @Html.ActionLink("Laporan Prestasi", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_date)
+                    </td>
                 }
 
-                else
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_month)
+                </td>
+                @if (@User.IsInRole("Guru"))
                 {
-                    @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
-                    @Html.ActionLink("Cetak", "Details", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
-                    @Html.ActionLink("Laporan Prestasi", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_desc)
+                    </td>
                 }
 
-            </td>
-        </tr>
-    }
+                @if (@User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_amaunt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_status)
+                    </td>
+                }
+                <td>
+                    @if (@User.IsInRole("Guru") || @User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }, new { @class = "btn btn-warning btnStyle" })
+                        @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Padam", "Delete", new { id = item.per_ID }, new { @class = "btn btn-danger btnStyle" })
+                        @Html.ActionLink("Laporan Prestasi", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
+                    }
 
-</table>
-    </div>
+                    else
+                    {
+                        @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Cetak", "Details", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
+                        @Html.ActionLink("Laporan Prestasi", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
+                    }
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

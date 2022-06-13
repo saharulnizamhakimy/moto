@@ -38,6 +38,9 @@
     <Property Name="per_studentID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="per_month" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="Student_Record" Relationship="Self.FK_Student_Performance_Record_Student_Record" FromRole="Student_Performance_Record" ToRole="Student_Record" />
+    <Property Name="per_year" Type="Int32" />
+    <Property Name="per_amaunt" Type="Double" />
+    <Property Name="per_status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Student_Record">
     <Key>

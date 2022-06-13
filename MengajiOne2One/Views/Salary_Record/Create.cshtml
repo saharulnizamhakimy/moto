@@ -37,8 +37,7 @@
             @Html.DropDownList("sal_year", new List<SelectListItem>{
                        new SelectListItem{ Text=(@i-1).ToString(), Value = (@i-1).ToString() },
                        new SelectListItem{ Text=@i.ToString(), Value = @i.ToString() },
-                       new SelectListItem{ Text=(@i+1).ToString(), Value = (@i+1).ToString() },
-                       new SelectListItem{ Text=(@i+2).ToString(), Value = (@i+2).ToString() }}, htmlAttributes: new { @class = "form-control" })
+                       new SelectListItem{ Text=(@i+1).ToString(), Value = (@i+1).ToString() }}, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.sal_year, "", new { @class = "text-danger" })
         </div>
     </div>

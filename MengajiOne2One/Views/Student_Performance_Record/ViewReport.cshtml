@@ -36,7 +36,7 @@
     </div>
     <br>
     <div class="row justify-content-center">
-        <h2> LAPORAN PRESTASI PELAJAR</h2>
+        <h2> LAPORAN BULANAN PELAJAR</h2>
     </div>
 
     <div class="row justify-content-center">
@@ -64,7 +64,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @{ var i = 0;}
+                        @{ var i = 0;
+                            var total = 0;}
                         @foreach (var item in Model.Item2)
                         {
                             <tr>
@@ -78,11 +79,31 @@
                                 <td>@item.c_timeEnd</td>
                                 <td>@item.c_duration</td>
                             </tr>
+                            total = (int)(total + @item.c_duration);
                         }
+                        <tr>
+
+                            <td>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>Jumlah Masa:</td>
+                            <td>@total Minit</td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>Jumlah Yuran :</td>
+                            <td>RM   @Html.DisplayFor(model => model.Item1.per_amaunt)</td>
+                        </tr>
 
                     </tbody>
                 </table>
                 <h5 style="text-align:left">Ulasan : @Html.DisplayFor(model => model.Item1.per_desc)<br></h5>
+
             </div>
 
         </div>

@@ -19,6 +19,9 @@ namespace MengajiOne2One.Models
         public System.DateTime per_date { get; set; }
         public string per_studentID { get; set; }
         public string per_month { get; set; }
+        public Nullable<int> per_year { get; set; }
+        public Nullable<double> per_amaunt { get; set; }
+        public string per_status { get; set; } = "BELUM DIBAYAR";
     
         public virtual Student_Record Student_Record { get; set; }
     }

@@ -50,6 +50,9 @@
     <Property Name="per_date" Type="date" Nullable="false" />
     <Property Name="per_studentID" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="per_month" Type="varchar" MaxLength="10" />
+    <Property Name="per_year" Type="int" />
+    <Property Name="per_amaunt" Type="float" />
+    <Property Name="per_status" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="Student Record">
     <Key>

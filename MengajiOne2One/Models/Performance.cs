@@ -31,6 +31,12 @@ namespace MengajiOne2One.Models
             [Required(ErrorMessage = "Ruangan ini perlu diisi")]
             [DisplayName("Bulan")]
             public string per_month { get; set; }
+            [DisplayName("Tahun")]
+            public Nullable<int> per_year { get; set; }
+            [DisplayName("Jumlah Perlu Dibayar")]
+            public Nullable<double> per_amaunt { get; set; }
+            [DisplayName("Status Bayaran")]
+            public string per_status { get; set; }
         }
     }
 }

@@ -31,6 +31,9 @@
     <EntitySetMapping Name="Student_Performance_Records">
       <EntityTypeMapping TypeName="motodbModel.Student_Performance_Record">
         <MappingFragment StoreEntitySet="Student Performance Record">
+          <ScalarProperty Name="per_status" ColumnName="per_status" />
+          <ScalarProperty Name="per_amaunt" ColumnName="per_amaunt" />
+          <ScalarProperty Name="per_year" ColumnName="per_year" />
           <ScalarProperty Name="per_ID" ColumnName="per_ID" />
           <ScalarProperty Name="per_desc" ColumnName="per_desc" />
           <ScalarProperty Name="per_date" ColumnName="per_date" />

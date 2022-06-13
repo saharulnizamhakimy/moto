@@ -60,7 +60,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.sal_amount, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.sal_amount, new { htmlAttributes = new { @class = "form-control" , @readonly = "True" } })
+            @Html.EditorFor(model => model.sal_amount, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
             @Html.ValidationMessageFor(model => model.sal_amount, "", new { @class = "text-danger" })
         </div>
     </div>
