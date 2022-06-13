@@ -14,7 +14,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pkg_rate)
+            @Html.EditorFor(model => model.pkg_rate, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -22,7 +22,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pkg_discount)
+            @Html.EditorFor(model => model.pkg_discount, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -30,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pkg_minhour)
+            @Html.EditorFor(model => model.pkg_minhour, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
     </dl>

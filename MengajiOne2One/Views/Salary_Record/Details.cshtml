@@ -14,28 +14,28 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User_Record.u_id)
+            @Html.EditorFor(model => model.User_Record.u_id, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.User_Record.u_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User_Record.u_name)
+            @Html.EditorFor(model => model.User_Record.u_name, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.sal_date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.sal_date)
+            @Html.TextBoxFor(model => model.sal_date, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = "true" })
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.sal_year)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.sal_year)
+            @Html.EditorFor(model => model.sal_year, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
         <dt>
         <dt>
@@ -43,21 +43,21 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.sal_month)
+            @Html.EditorFor(model => model.sal_month, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.sal_amount)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.sal_amount)
+            @Html.EditorFor(model => model.sal_amount, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.sal_status)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.sal_status)
+            @Html.EditorFor(model => model.sal_status, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
     </dl>
 </div>

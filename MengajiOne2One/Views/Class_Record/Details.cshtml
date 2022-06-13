@@ -14,7 +14,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.c_date)
+            @Html.EditorFor(model => model.c_date, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -22,7 +22,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.c_duration)
+            @Html.EditorFor(model => model.c_duration, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -30,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.c_timeStart)
+            @Html.EditorFor(model => model.c_timeStart, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -38,7 +38,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.c_timeEnd)
+            @Html.EditorFor(model => model.c_timeEnd, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -46,7 +46,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.c_status)
+            @Html.EditorFor(model => model.c_status, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -54,7 +54,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Student_Record.s_name)
+            @Html.EditorFor(model => model.Student_Record.s_name, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
         <dt>
@@ -62,7 +62,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User_Record.u_name)
+            @Html.EditorFor(model => model.User_Record.u_name, new { htmlAttributes = new { @class = "form-control", @readonly = "True" } })
         </dd>
 
     </dl>
