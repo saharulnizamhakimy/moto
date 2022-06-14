@@ -11,104 +11,70 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_id, new { htmlAttributes = new { @class = "form-control", maxlength = "12"  } })
-                @Html.ValidationMessageFor(model => model.u_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control", type = "password", id = "pwd1", maxlength = "20" } })
-                @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
-                <input type="checkbox" onclick="myFunction1()">  Lihat Kata Laluan
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label class="control-label col-md-2"> Sahkan Kata Laluan </label>
-            <div class="col-md-10">
-                <input class="form-control" type="password" id="pwd2">
-                <input type="checkbox" onclick="myFunction2()">  Lihat Kata Laluan
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_type, "Jenis Pengguna", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("u_type", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.u_type, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <script>
-
-            function matchPassword() {
-                var pw1 = document.getElementById("pwd1");
-                var pw2 = document.getElementById("pwd2");
-                if (pw1.value != pw2.value) {
-                    alert("Kata laluan tidak sama");
-                    return false;
-                } 
-            }
-
-            function myFunction1() {
-                var x = document.getElementById("pwd1");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-
-            function myFunction2() {
-                var x = document.getElementById("pwd2");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-        </script>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_name, new { htmlAttributes = new { @class = "form-control", maxlength = "100" } })
-                @Html.ValidationMessageFor(model => model.u_name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_contactNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_contactNo, new { htmlAttributes = new { @class = "form-control", maxlength = "15" } })
-                @Html.ValidationMessageFor(model => model.u_contactNo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control", type = "email", maxlength = "50" } })
-                @Html.ValidationMessageFor(model => model.u_email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Tambah" class="btn btn-success" onclick="return matchPassword()" ; />
-            </div>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.u_id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_id, new { htmlAttributes = new { @class = "form-control", maxlength = "12", onkeyup = "myFunction()" } })
+            @Html.ValidationMessageFor(model => model.u_id, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.u_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_pwd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.u_pwd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            console.log(this);
+            document.getElementById('u_pwd').value = document.getElementById('u_id').value;
+        }
+    </script>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.u_type, "Jenis Pengguna", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("u_type", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.u_type, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.u_name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_name, new { htmlAttributes = new { @class = "form-control", maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.u_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.u_contactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_contactNo, new { htmlAttributes = new { @class = "form-control", maxlength = "15" } })
+            @Html.ValidationMessageFor(model => model.u_contactNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.u_email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control", type = "email", maxlength = "50" } })
+            @Html.ValidationMessageFor(model => model.u_email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Tambah" class="btn btn-success" onclick="return matchPassword()" ; />
+        </div>
+    </div>
+</div>
 }
 
 <div>
