@@ -17,7 +17,8 @@
 
 }
 <div class=" table-responsive">
-    <table class="table ">
+    <table class="table " id="example1">
+        <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.User_Record.u_name)
@@ -41,37 +42,40 @@
 
             <th></th>
         </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
 
-        @foreach (var item in Model)
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User_Record.u_name)
-        </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User_Record.u_name)
+                    </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.sal_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sal_month)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sal_year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sal_amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sal_status)
-        </td>
-        <td>
-            @Html.ActionLink("Kemaskini", "Edit", new { id = item.sal_ID }, new { @class = "btn btn-warning btnStyle" })
-            @Html.ActionLink("Butiran", "Details", new { id = item.sal_ID }, new { @class = "btn btn-info btnStyle" })
-            @Html.ActionLink("Padam", "Delete", new { id = item.sal_ID }, new { @class = "btn btn-danger btnStyle" })
-            @Html.ActionLink("Invois", "ViewInvoice", new { id = item.sal_ID }, new { @class = "btn btn-danger btnStyle", target = "_blank" })
-        </td>
-    </tr>
-        }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sal_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sal_month)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sal_year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sal_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sal_status)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.sal_ID }, new { @class = "btn btn-warning btnStyle" })
+                        @Html.ActionLink("Butiran", "Details", new { id = item.sal_ID }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Padam", "Delete", new { id = item.sal_ID }, new { @class = "btn btn-danger btnStyle" })
+                        @Html.ActionLink("Invois", "ViewInvoice", new { id = item.sal_ID }, new { @class = "btn btn-primary btnStyle", target = "_blank" })
+                    </td>
+                </tr>
 
+            }
+        </tbody>
     </table>
     </div>

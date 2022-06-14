@@ -17,7 +17,7 @@ namespace MengajiOne2One.Controllers
 
         // GET: Student_Record
         public ActionResult Index()
-        {
+        {             
             var student_Records = db.Student_Records.Include(s => s.User_Record);
             return View(student_Records.ToList());
         }
@@ -63,10 +63,18 @@ namespace MengajiOne2One.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Student_Records.Add(student_Record);
-                db.SaveChanges();
-                TempData["AlertMessage"] = "Rekod berjaya disimpan.";
-                return RedirectToAction("Index");
+                var dup = db.Student_Records.Where(a => a.s_id == student_Record.s_id).ToList();
+                if (dup.Count() != 0)
+                {
+                    TempData["Message"] = "Akaun di bawah ID ini telah wujud!";
+                }
+                else
+                {
+                    db.Student_Records.Add(student_Record);
+                    db.SaveChanges();
+                    TempData["AlertMessage"] = "Rekod berjaya disimpan.";
+                    return RedirectToAction("Index");
+                }
             }
             var clients = db.User_Records.Where(a => a.u_type == 2)
                 .Select(s => new

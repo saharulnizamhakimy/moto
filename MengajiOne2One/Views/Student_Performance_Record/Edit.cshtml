@@ -19,59 +19,113 @@
     @if (User.IsInRole("Guru"))
     {
         @Html.HiddenFor(model => model.per_status)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_studentID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("per_studentID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.per_studentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        var i = DateTime.Now.Year;
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_year, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("per_year", new List<SelectListItem>{
+                           new SelectListItem{ Text=(i-1).ToString(), Value = (i-1).ToString() },
+                           new SelectListItem{ Text=i.ToString(), Value = i.ToString() },
+                           new SelectListItem{ Text=(i+1).ToString(), Value = (i+1).ToString() }}, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.per_year, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_month, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("per_month", new List<SelectListItem>{
+                       new SelectListItem{ Text="Januari", Value = "Januari" },
+                       new SelectListItem{ Text="Februari", Value = "Februari" },
+                       new SelectListItem{ Text="Mac", Value = "Mac" },
+                       new SelectListItem{ Text="April", Value = "April" },
+                       new SelectListItem{ Text="Mei", Value = "Mei" },
+                       new SelectListItem{ Text="Jun", Value = "Jun" },
+                       new SelectListItem{ Text="Julai", Value = "Julai" },
+                       new SelectListItem{ Text="Ogos", Value = "Ogos" },
+                       new SelectListItem{ Text="September", Value = "September" },
+                       new SelectListItem{ Text="Oktober", Value = "Oktober" },
+                       new SelectListItem{ Text="November", Value = "November" },
+                       new SelectListItem{ Text="Disember", Value = "Disember" }}, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.per_month, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.per_desc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.per_desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
     }
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.per_studentID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("per_studentID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.per_studentID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    @{ var i = @DateTime.Now.Year;}
-    <div class="form-group">
-        @Html.LabelFor(model => model.per_year, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("per_year", new List<SelectListItem>{
-                       new SelectListItem{ Text=(@i-1).ToString(), Value = (@i-1).ToString() },
-                       new SelectListItem{ Text=@i.ToString(), Value = @i.ToString() },
-                       new SelectListItem{ Text=(@i+1).ToString(), Value = (@i+1).ToString() }}, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.per_year, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.per_month, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("per_month", new List<SelectListItem>{
-                   new SelectListItem{ Text="Januari", Value = "Januari" },
-                   new SelectListItem{ Text="Februari", Value = "Februari" },
-                   new SelectListItem{ Text="Mac", Value = "Mac" },
-                   new SelectListItem{ Text="April", Value = "April" },
-                   new SelectListItem{ Text="Mei", Value = "Mei" },
-                   new SelectListItem{ Text="Jun", Value = "Jun" },
-                   new SelectListItem{ Text="Julai", Value = "Julai" },
-                   new SelectListItem{ Text="Ogos", Value = "Ogos" },
-                   new SelectListItem{ Text="September", Value = "September" },
-                   new SelectListItem{ Text="Oktober", Value = "Oktober" },
-                   new SelectListItem{ Text="November", Value = "November" },
-                   new SelectListItem{ Text="Disember", Value = "Disember" }}, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.per_month, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.per_desc, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.per_desc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.per_desc, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     @if (User.IsInRole("Admin"))
     {
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_studentID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("per_studentID", null, htmlAttributes: new { @class = "form-control", @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.per_studentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        var i = @DateTime.Now.Year;
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_year, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("per_year", new List<SelectListItem>{
+                           new SelectListItem{ Text=(i-1).ToString(), Value = (i-1).ToString() },
+                           new SelectListItem{ Text=i.ToString(), Value = i.ToString() },
+                           new SelectListItem{ Text=(i+1).ToString(), Value = (i+1).ToString() }}, htmlAttributes: new { @class = "form-control", @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.per_year, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_month, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("per_month", new List<SelectListItem>{
+                       new SelectListItem{ Text="Januari", Value = "Januari" },
+                       new SelectListItem{ Text="Februari", Value = "Februari" },
+                       new SelectListItem{ Text="Mac", Value = "Mac" },
+                       new SelectListItem{ Text="April", Value = "April" },
+                       new SelectListItem{ Text="Mei", Value = "Mei" },
+                       new SelectListItem{ Text="Jun", Value = "Jun" },
+                       new SelectListItem{ Text="Julai", Value = "Julai" },
+                       new SelectListItem{ Text="Ogos", Value = "Ogos" },
+                       new SelectListItem{ Text="September", Value = "September" },
+                       new SelectListItem{ Text="Oktober", Value = "Oktober" },
+                       new SelectListItem{ Text="November", Value = "November" },
+                       new SelectListItem{ Text="Disember", Value = "Disember" }}, htmlAttributes: new { @class = "form-control", @readonly = "true" })
+                @Html.ValidationMessageFor(model => model.per_month, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.per_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.per_desc, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.per_desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.per_status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

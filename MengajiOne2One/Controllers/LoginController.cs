@@ -39,9 +39,17 @@ namespace MengajiOne2One.Controllers
                         {
                             return Redirect(ReturnUrl);
                         }
-                        else
+                        else 
                         {
-                            return RedirectToAction("Index", "Home");
+                            if (User.IsInRole("Admin"))
+                            {
+                                return RedirectToAction("Index", "Home");
+                        }
+                            else
+                            {
+                                return RedirectToAction("Index", "Class_Record");
+                            }
+                            
                         }
 
                     }

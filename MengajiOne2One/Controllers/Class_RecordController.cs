@@ -159,11 +159,7 @@ namespace MengajiOne2One.Controllers
                 var diff = timeEnd - timeStart;
                 var formatteddiff = (int)diff.TotalMinutes;
 
-                if (formatteddiff >= 90)
-                {
-                    formatteddiff = 90;
-                }
-                else if (formatteddiff >= 60)
+                if (formatteddiff >= 60)
                 {
                     formatteddiff = 60;
                 }

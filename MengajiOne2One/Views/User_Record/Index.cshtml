@@ -1,68 +1,82 @@
 ﻿@model IEnumerable<MengajiOne2One.Models.User_Record>
 
-@{
+    @{
     ViewBag.Title = "Index";
-}
+    }
 
-<h2>Senarai Pengguna</h2>
+    <h2>Senarai Pengguna</h2>
+    @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">*@
 
-<p>
-    @Html.ActionLink("Tambah Pengguna", "Create", null, new { @class = "btn btn-success btnStyle" })
-</p>
-@if (TempData["AlertMessage"] != null)
+    <p>
+        @Html.ActionLink("Tambah Pengguna", "Create", null, new { @class = "btn btn-success btnStyle" })
+    </p>
+    @if (TempData["AlertMessage"] != null)
 {
     <div class="alert alert-success">
         @TempData["AlertMessage"]
     </div>
 
 }
-<div class=" table-responsive">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.u_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.u_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.u_contactNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.u_email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User_Type.t_desc)
-            </th>
-            <th></th>
-        </tr>
+    <div class=" table-responsive">
+        <table class="table" id="example1">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.u_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.u_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.u_contactNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.u_email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User_Type.t_desc)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.u_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.u_name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.u_contactNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.u_email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User_Type.t_desc)
-                </td>
-                <td>
-                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.u_id }, new { @class = "btn btn-warning btnStyle" })
-                    @Html.ActionLink("Butiran", "Details", new { id = item.u_id }, new { @class = "btn btn-info btnStyle" })
-                    @Html.ActionLink("Padam", "Delete", new { id = item.u_id }, new { @class = "btn btn-danger btnStyle" })
-                </td>
-            </tr>
+                @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.u_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.u_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.u_contactNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.u_email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User_Type.t_desc)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.u_id }, new { @class = "btn btn-warning btnStyle" })
+                        @Html.ActionLink("Butiran", "Details", new { id = item.u_id }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Padam", "Delete", new { id = item.u_id }, new { @class = "btn btn-danger btnStyle" })
+                    </td>
+                </tr>
 
-        }
+            }
+            </tbody>
 
-    </table>
-</div>
+        </table>
+
+        
+        @*<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />  
+
+        <script src=" https://code.jquery.com/jquery-3.5.1.js" ></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+        <script>
+            $('#example1').DataTable({});
+        </script>*@

@@ -53,11 +53,20 @@ namespace MengajiOne2One.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.User_Records.Add(user_Record);
-                db.SaveChanges();
-                TempData["AlertMessage"] = "Rekod berjaya disimpan.";
-                return RedirectToAction("Index");
+                var dup = db.User_Records.Where(a => a.u_id == user_Record.u_id).ToList();
+                if (dup.Count() != 0)
+                {
+                    TempData["Message"] = "Akaun di bawah ID ini telah wujud!";
+                }
+                else
+                {
+                    db.User_Records.Add(user_Record);
+                    db.SaveChanges();
+                    TempData["AlertMessage"] = "Rekod berjaya disimpan.";
+                    return RedirectToAction("Index");
+                }
             }
+
 
             ViewBag.u_type = new SelectList(db.User_Types, "t_ID", "t_desc", user_Record.u_type);
             return View(user_Record);
