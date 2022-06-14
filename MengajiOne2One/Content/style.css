@@ -81,6 +81,11 @@ td {
 }
 
 /* page */
+@media print {
+    #printPageButton {
+        display: none;
+    }
+}
 
 html {
     font: 16px/1 'Open Sans', sans-serif;

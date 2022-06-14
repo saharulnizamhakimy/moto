@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Rekod Kelas</h2>
+<h2>Senarai Kelas</h2>
 
 <p>
     @if (User.IsInRole("Guru"))
@@ -17,6 +17,11 @@
     <table class="table" id="example1">
         <thead>
             <tr>
+
+
+                <th style="display:none;">
+                    @Html.DisplayNameFor(model => model.c_id)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.c_date)
                 </th>
@@ -47,6 +52,9 @@
         {
 
             <tr>
+                <td style="display:none;">
+                    @Html.DisplayFor(modelItem => item.c_id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.c_date)
                 </td>
@@ -71,12 +79,12 @@
                 <td>
                     @if (item.c_timeEnd == null && User.IsInRole("Guru"))
                     {
-                    @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
+                        @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
                     }
 
                     @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
                     {
-                    @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
+                        @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
                     }
                 </td>
             </tr>

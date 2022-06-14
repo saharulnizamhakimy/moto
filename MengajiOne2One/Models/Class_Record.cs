@@ -11,7 +11,8 @@ namespace MengajiOne2One.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Class_Record
     {
         public int c_id { get; set; }

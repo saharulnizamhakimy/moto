@@ -144,8 +144,8 @@ h3 {
                     </a>
                     <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Rekod Pengguna</h6>
-                            <a class="collapse-item" href="~/Student_Performance_Record/Index">Senarai Pengguna</a>
+                            <h6 class="collapse-header">Rekod Yuran Pelajar</h6>
+                            <a class="collapse-item" href="~/Student_Performance_Record/Index">Senarai Rekod Yuran</a>
                         </div>
                     </div>
                 </li>
@@ -370,7 +370,9 @@ h3 {
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
     <script>
-        $('#example1').DataTable({});
+        $('#example1').DataTable({
+            order: [[0, 'desc']],
+        });
     </script>
 
 </body>

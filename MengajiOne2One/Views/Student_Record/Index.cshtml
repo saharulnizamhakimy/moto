@@ -4,16 +4,18 @@
     ViewBag.Title = "Senarai Pelajar";
 }
 
+<h2>Senarai Pelajar</h2>
 <p>
     @Html.ActionLink("Tambah Pelajar", "Create", null, new { @class = "btn btn-success btnStyle" })
 </p>
 @if (TempData["AlertMessage"] != null)
 {
-<div class="alert alert-success">
-    @TempData["AlertMessage"]
-</div>
+    <div class="alert alert-success">
+        @TempData["AlertMessage"]
+    </div>
 
 }
+
 <div class=" table-responsive">
     <table class="table" id="example1">
         <thead>
@@ -47,39 +49,39 @@
         </thead>
         <tbody>
             @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_age)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_contactNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_regDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s_package)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User_Record.u_name)
-                </td>
-                <td>
-                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.s_id }, new { @class = "btn btn-warning btnStyle" })
-                    @Html.ActionLink("Butiran", "Details", new { id = item.s_id }, new { @class = "btn btn-info btnStyle" })
-                    @Html.ActionLink("Padam", "Delete", new { id = item.s_id }, new { @class = "btn btn-danger btnStyle" })
-                </td>
-            </tr>
-        }
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_contactNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_regDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.s_package)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User_Record.u_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.s_id }, new { @class = "btn btn-warning btnStyle" })
+                        @Html.ActionLink("Butiran", "Details", new { id = item.s_id }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Padam", "Delete", new { id = item.s_id }, new { @class = "btn btn-danger btnStyle" })
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>  

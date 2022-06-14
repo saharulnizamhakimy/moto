@@ -4,7 +4,7 @@
     ViewBag.Title = "Tambah Rekod Elaun";
 }
 
-<h2>Tambah Rekod Elaun</h2>
+<h2>Senarai Elaun</h2>
 
 <p>
     @Html.ActionLink("Tambah Rekod Elaun", "Create", null, new { @class = "btn btn-success btnStyle" })
@@ -19,61 +19,67 @@
 <div class=" table-responsive">
     <table class="table " id="example1">
         <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User_Record.u_name)
-            </th>
+            <tr>
+                <th style="display:none;">
+                    @Html.DisplayNameFor(model => model.sal_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User_Record.u_name)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.sal_date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sal_month)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sal_year)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sal_amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sal_status)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sal_date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sal_month)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sal_year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sal_amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sal_status)
+                </th>
 
-            <th></th>
-        </tr>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User_Record.u_name)
-                    </td>
+            <tr>
+                <td style="display:none;">
+                    @Html.DisplayFor(modelItem => item.sal_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Record.u_name)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sal_date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sal_month)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sal_year)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sal_amount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sal_status)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.sal_ID }, new { @class = "btn btn-warning btnStyle" })
-                        @Html.ActionLink("Butiran", "Details", new { id = item.sal_ID }, new { @class = "btn btn-info btnStyle" })
-                        @Html.ActionLink("Padam", "Delete", new { id = item.sal_ID }, new { @class = "btn btn-danger btnStyle" })
-                        @Html.ActionLink("Invois", "ViewInvoice", new { id = item.sal_ID }, new { @class = "btn btn-primary btnStyle", target = "_blank" })
-                    </td>
-                </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sal_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sal_month)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sal_year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sal_amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sal_status)
+                </td>
+                <td>
+                    @Html.ActionLink("Kemaskini", "Edit", new { id = item.sal_ID }, new { @class = "btn btn-warning btnStyle" })
+                    @Html.ActionLink("Butiran", "Details", new { id = item.sal_ID }, new { @class = "btn btn-info btnStyle" })
+                    @Html.ActionLink("Padam", "Delete", new { id = item.sal_ID }, new { @class = "btn btn-danger btnStyle" })
+                    @Html.ActionLink("Invois", "ViewInvoice", new { id = item.sal_ID }, new { @class = "btn btn-primary btnStyle", target = "_blank" })
+                </td>
+            </tr>
 
             }
         </tbody>

@@ -19,6 +19,63 @@ namespace MengajiOne2One.Controllers
         // GET: Salary_Record
         public ActionResult Index()
         {
+            var roww = db.Salary_Records.Include(p => p.User_Record).ToList();
+            foreach (var Sreport in roww)
+            {
+                double total = 0;
+                var rate = (from s in db.Salary_Rate where s.sr_id == 1 select s.sr_val).ToArray();
+                var id = Sreport.sal_month;
+                if (id == "Januari")
+                {
+                    id = "January";
+                }
+                else if (id == "Februari")
+                {
+                    id = "February";
+                }
+                else if (id == "Mac")
+                {
+                    id = "March";
+                }
+                else if (id == "Mei")
+                {
+                    id = "May";
+                }
+                else if (id == "Jun")
+                {
+                    id = "June";
+                }
+                else if (id == "Julai")
+                {
+                    id = "July";
+                }
+                else if (id == "Ogos")
+                {
+                    id = "August";
+                }
+                else if (id == "Oktober")
+                {
+                    id = "October";
+                }
+                else if (id == "Disember")
+                {
+                    id = "December";
+                }
+                int month = DateTime.ParseExact(id, "MMMM", CultureInfo.CurrentCulture).Month;
+                int year = Int32.Parse(Sreport.sal_year);
+                var hours = (from s in db.Class_Records where s.c_teacherID == Sreport.sal_teacherID where s.c_date.Month == month where s.c_date.Year == year where s.c_status == "TELAH DISAHKAN" select s.c_duration).ToArray();
+                for (int i = 0; i < hours.Length; i++)
+                {
+
+                    total = (double)(total + hours[i]);
+                }
+                total = total / 60;
+                var salary = total * rate[0];
+                Salary_Record ss = db.Salary_Records.Find(Sreport.sal_ID);
+                ss.sal_amount = salary;
+                db.Entry(ss).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             var salary_Records = db.Salary_Records.Include(s => s.User_Record);
             return View(salary_Records.ToList());
         }

@@ -19,6 +19,75 @@ namespace MengajiOne2One.Controllers
         // GET: Student_Performance_Record
         public ActionResult Index()
         {
+            var roww = db.Student_Performance_Records.Include(s => s.Student_Record).ToList();
+
+            foreach(var Sreport in roww)
+            {
+                var mnt = Sreport.per_month;
+                var yr = Sreport.per_year;
+                if (mnt == "Januari")
+                {
+                    mnt = "January";
+                }
+                else if (mnt == "Februari")
+                {
+                    mnt = "February";
+                }
+                else if (mnt == "Mac")
+                {
+                    mnt = "March";
+                }
+                else if (mnt == "Mei")
+                {
+                    mnt = "May";
+                }
+                else if (mnt == "Jun")
+                {
+                    mnt = "June";
+                }
+                else if (mnt == "Julai")
+                {
+                    mnt = "July";
+                }
+                else if (mnt == "Ogos")
+                {
+                    mnt = "August";
+                }
+                else if (mnt == "Oktober")
+                {
+                    mnt = "October";
+                }
+                else if (mnt == "Disember")
+                {
+                    mnt = "December";
+                }
+
+                int month = DateTime.ParseExact(mnt, "MMMM", CultureInfo.CurrentCulture).Month;
+                var year = Sreport.per_date.Year;
+                var Creport = db.Class_Records.Include(s => s.User_Record).Where(s => s.c_studentID == Sreport.per_studentID).Where(c => c.c_date.Month == month).Where(c => c.c_date.Year == year).Where(c => c.c_status == "TELAH DISAHKAN");
+                var report = Creport.ToList();
+                var package = db.Packages.FirstOrDefault(s => s.pkg_id == Sreport.Student_Record.s_package);
+                float duration = 0;
+                foreach (var item in report)
+                {
+                    duration = ((float)(duration + item.c_duration));
+                }
+                float hour = duration / 60;
+                float total = 0;
+                if (hour >= package.pkg_minhour)
+                {
+                    total = (float)((hour) * package.pkg_discount);
+                }
+                else
+                {
+                    total = (float)((hour) * package.pkg_rate);
+                }
+                Student_Performance_Record ss = db.Student_Performance_Records.Find(Sreport.per_ID);
+                ss.per_amaunt = total;
+                db.Entry(ss).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
             if (@User.IsInRole("Guru"))
             {
                 var student_Performance_Records = db.Student_Performance_Records.Include(s => s.Student_Record).Where(s => s.Student_Record.s_teacherID == User.Identity.Name);
@@ -348,85 +417,6 @@ namespace MengajiOne2One.Controllers
 
             return View(Tuple.Create(Sreport, Creport.ToList()));
             }
-        public ActionResult UpdateYuran(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
-            var Sreport = db.Student_Performance_Records.Include(s => s.Student_Record).FirstOrDefault(x => x.per_ID == id);
-            var mnt = Sreport.per_month;
-            var yr = Sreport.per_year;
-            if (mnt == "Januari")
-            {
-                mnt = "January";
-            }
-            else if (mnt == "Februari")
-            {
-                mnt = "February";
-            }
-            else if (mnt == "Mac")
-            {
-                mnt = "March";
-            }
-            else if (mnt == "Mei")
-            {
-                mnt = "May";
-            }
-            else if (mnt == "Jun")
-            {
-                mnt = "June";
-            }
-            else if (mnt == "Julai")
-            {
-                mnt = "July";
-            }
-            else if (mnt == "Ogos")
-            {
-                mnt = "August";
-            }
-            else if (mnt == "Oktober")
-            {
-                mnt = "October";
-            }
-            else if (mnt == "Disember")
-            {
-                mnt = "December";
-            }
-
-            int month = DateTime.ParseExact(mnt, "MMMM", CultureInfo.CurrentCulture).Month;
-            var year = Sreport.per_date.Year;
-            var Creport = db.Class_Records.Include(s => s.User_Record).Where(s => s.c_studentID == Sreport.per_studentID).Where(c => c.c_date.Month == month).Where(c => c.c_date.Year == year).Where(c => c.c_status == "TELAH DISAHKAN");
-            var report = Creport.ToList();
-            var package = db.Packages.FirstOrDefault(s => s.pkg_id == Sreport.Student_Record.s_package);
-            float duration = 0;
-            foreach (var item in report)
-            {
-                duration = ((float)(duration + item.c_duration));
-            }
-            float hour = duration / 60;
-            float total = 0;
-            if (hour >= package.pkg_minhour)
-            {
-                total = (float)((hour) * package.pkg_discount);
-            }
-            else
-            {
-                total = (float)((hour) * package.pkg_rate);
-            }
-            Student_Performance_Record student_Performance_Record = db.Student_Performance_Records.Find(Sreport.per_ID);
-            student_Performance_Record.per_amaunt = total;
-            db.Entry(student_Performance_Record).State = EntityState.Modified;
-            db.SaveChanges();
-            Sreport = db.Student_Performance_Records.Include(s => s.Student_Record).FirstOrDefault(x => x.per_ID == id);
-
-            //var stuPer = from p in tb_performance
-            // join s in tb_student on p.StudentID equals s.ID
-            // where p.ID == id
-            // select new stuPer (tb_performancevm = p, tb_studentvm = s);
-
-            return RedirectToAction("Index");
-        }
     }
     }

@@ -31,6 +31,9 @@ else
     <table class="table" id="example1">
         <thead>
             <tr>
+                <th style="display:none;">
+                    @Html.DisplayNameFor(model => model.per_ID)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Student_Record.s_id)
                 </th>
@@ -38,11 +41,11 @@ else
                     @Html.DisplayNameFor(model => model.Student_Record.s_name)
                 </th>
                 @if (@User.IsInRole("Guru"))
-            {
-                <th>
-                    @Html.DisplayNameFor(model => model.per_date)
-                </th>
-            }
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.per_date)
+                    </th>
+                }
 
                 <th>
                     @Html.DisplayNameFor(model => model.per_year)
@@ -51,21 +54,21 @@ else
                     @Html.DisplayNameFor(model => model.per_month)
                 </th>
                 @if (@User.IsInRole("Guru"))
-            {
-                <th>
-                    @Html.DisplayNameFor(model => model.per_desc)
-                </th>
-            }
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.per_desc)
+                    </th>
+                }
 
                 @if (@User.IsInRole("Admin"))
-            {
-                <th>
-                    @Html.DisplayNameFor(model => model.per_amaunt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.per_status)
-                </th>
-            }
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.per_amaunt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.per_status)
+                    </th>
+                }
 
                 <th></th>
             </tr>
@@ -74,6 +77,9 @@ else
             @foreach (var item in Model)
         {
             <tr>
+                <td style="display:none;">
+                    @Html.DisplayFor(modelItem => item.per_ID)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Student_Record.s_id)
                 </td>
@@ -82,9 +88,9 @@ else
                 </td>
                 @if (@User.IsInRole("Guru"))
                 {
-                <td>
-                    @Html.DisplayFor(modelItem => item.per_date)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_date)
+                    </td>
                 }
 
                 <td>
@@ -95,40 +101,36 @@ else
                 </td>
                 @if (@User.IsInRole("Guru"))
                 {
-                <td>
-                    @Html.DisplayFor(modelItem => item.per_desc)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_desc)
+                    </td>
                 }
 
                 @if (@User.IsInRole("Admin"))
                 {
-                <td>
-                    @Html.DisplayFor(modelItem => item.per_amaunt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.per_status)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_amaunt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.per_status)
+                    </td>
                 }
-            <td>
-                @if (@User.IsInRole("Guru") || @User.IsInRole("Admin"))
+                <td>
+                    @if (@User.IsInRole("Guru") || @User.IsInRole("Admin"))
                     {
-                @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }, new { @class = "btn btn-warning btnStyle" })
-                @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
-                @Html.ActionLink("Padam", "Delete", new { id = item.per_ID }, new { @class = "btn btn-danger btnStyle" })
-                @Html.ActionLink("Laporan Bulanan", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle", target="_blank" })
-
-                <button class="btn"><a href="@Url.Action("UpdateYuran", "Student_Performance_Record", new { id = item.per_ID })">
-                <i class="fa fa-refresh"></i> Refresh</a></button>
-                }
+                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.per_ID }, new { @class = "btn btn-warning btnStyle" })
+                        @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Padam", "Delete", new { id = item.per_ID }, new { @class = "btn btn-danger btnStyle" })
+                        @Html.ActionLink("Laporan Bulanan", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle", target = "_blank" })
+                    }
 
                     else
                     {
-                @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
-                @Html.ActionLink("Cetak", "Details", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle" })
-                @Html.ActionLink("Laporan Prestasi", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle", target = "_blank" })
+                        @Html.ActionLink("Butiran", "Details", new { id = item.per_ID }, new { @class = "btn btn-info btnStyle" })
+                        @Html.ActionLink("Laporan Prestasi", "ViewReport", new { id = item.per_ID }, new { @class = "btn btn-primary btnStyle", target = "_blank" })
                     }
 
-            </td>
+                </td>
             </tr>
         }
         </tbody>

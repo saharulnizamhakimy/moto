@@ -27,7 +27,7 @@
 <body>
     <div class="row justify-content-center pb-5">
         <div class="well col-xs-10 col-sm-10 col-md-3 ">
-            <button onclick="window.print()" id="printPageButton"><i style="font-size:24px" class="fa">&#xf02f;</i></button>
+            <button onclick="window.print()" id="printPageButton"><i style="font-size:24px" class="fas fa-print">&#xf02f;</i></button>
         </div>
     </div>
 
@@ -74,7 +74,7 @@
                                     @{i++;}
                                     @i
                                 </td>
-                                <td>@item.c_date</td>
+                                <td>@item.c_date.ToShortDateString()</td>
                                 <td>@item.c_timeStart</td>
                                 <td>@item.c_timeEnd</td>
                                 <td>@item.c_duration</td>

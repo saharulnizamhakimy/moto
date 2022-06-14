@@ -35,13 +35,14 @@ namespace MengajiOne2One.Controllers
                     FormsAuthentication.SetAuthCookie(usermodel.u_id, false);
                     Session["UserID"] = obj.u_id.ToString();
                     Session["Username"] = obj.u_name.ToString();
-                        if(ReturnUrl != null)
+                    Session["type"] = obj.u_type.ToString();
+                    if (ReturnUrl != null)
                         {
                             return Redirect(ReturnUrl);
                         }
                         else 
                         {
-                            if (User.IsInRole("Admin"))
+                        if (Session["type"].ToString() == "1")
                             {
                                 return RedirectToAction("Index", "Home");
                         }
