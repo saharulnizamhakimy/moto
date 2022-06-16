@@ -13,82 +13,124 @@
     }
 
 </p>
-<div class=" table-responsive">
-    <table class="table" id="example1">
-        <thead>
-            <tr>
+@using (Html.BeginForm())
+{
+<div style="border: 25px; border: 2px solid #c7ccbe; padding: 20px; ">
+    <div class="row">
+        <div class="col-sm-6">
+            Bulan:  @Html.DropDownList("SearchBulan", new List<SelectListItem>{
+   new SelectListItem{ Text="Sila Pilih", Value = "", Disabled=true, Selected=true},
+   new SelectListItem{ Text="Januari", Value = "1" },
+   new SelectListItem{ Text="Februari", Value = "2" },
+   new SelectListItem{ Text="Mac", Value = "3" },
+   new SelectListItem{ Text="April", Value = "4" },
+   new SelectListItem{ Text="Mei", Value = "5" },
+   new SelectListItem{ Text="Jun", Value = "6" },
+   new SelectListItem{ Text="Julai", Value = "7" },
+   new SelectListItem{ Text="Ogos", Value = "8" },
+   new SelectListItem{ Text="September", Value = "9" },
+   new SelectListItem{ Text="Oktober", Value = "10" },
+   new SelectListItem{ Text="November", Value = "11" },
+   new SelectListItem{ Text="Disember", Value = "12" }}, htmlAttributes: new { @class = "form-control" })
+        </div>
+        @{ var i = @DateTime.Now.Year;}
+        <div class="col-sm-6">
+            Tahun:@Html.DropDownList("SearchTahun", new List<SelectListItem>{
+     new SelectListItem{ Text="Sila Pilih", Value = "", Disabled=true, Selected=true },
+   new SelectListItem{ Text=(@i-1).ToString(), Value = (@i-1).ToString() },
+   new SelectListItem{ Text=@i.ToString(), Value = @i.ToString() },
+   new SelectListItem{ Text=(@i+1).ToString(), Value = (@i+1).ToString() }}, htmlAttributes: new { @class = "form-control" })
+        </div>
+
+    </div>
+    <br />
+    <div style="text-align:center;">
+        <input type="submit" value="Tapis" class="btn btn-info" />
+    </div>
 
 
-                <th style="display:none;">
-                    @Html.DisplayNameFor(model => model.c_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.c_date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.c_duration)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.c_timeStart)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.c_timeEnd)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.c_status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_Record.s_name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User_Record.u_name)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-        {
-
-            <tr>
-                <td style="display:none;">
-                    @Html.DisplayFor(modelItem => item.c_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.c_date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.c_duration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.c_timeStart)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.c_timeEnd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.c_status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_Record.s_name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User_Record.u_name)
-                </td>
-                <td>
-                    @if (item.c_timeEnd == null && User.IsInRole("Guru"))
-                    {
-                        @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
-                    }
-
-                    @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
-                    {
-                        @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
-                    }
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
 </div>
+
+        
+
+        }
+        <br />
+        <div class=" table-responsive">
+            <table class="table" id="example1">
+                <thead>
+                    <tr>
+
+
+                        <th style="display:none;">
+                            @Html.DisplayNameFor(model => model.c_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.c_date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.c_duration)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.c_timeStart)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.c_timeEnd)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.c_status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Student_Record.s_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User_Record.u_name)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td style="display:none;">
+                                @Html.DisplayFor(modelItem => item.c_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.c_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.c_duration)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.c_timeStart)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.c_timeEnd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.c_status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Student_Record.s_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User_Record.u_name)
+                            </td>
+                            <td>
+                                @if (item.c_timeEnd == null && User.IsInRole("Guru"))
+                                {
+                                    @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
+                                }
+
+                                @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
+                                {
+                                    @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>

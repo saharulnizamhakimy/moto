@@ -17,7 +17,7 @@ namespace MengajiOne2One.Controllers
         private motodbEntities db = new motodbEntities();
 
         // GET: Salary_Record
-        public ActionResult Index()
+        public ActionResult Index(string SearchBulan, string SearchTahun)
         {
             var roww = db.Salary_Records.Include(p => p.User_Record).ToList();
             foreach (var Sreport in roww)
@@ -76,8 +76,19 @@ namespace MengajiOne2One.Controllers
                 db.Entry(ss).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            var salary_Records = db.Salary_Records.Include(s => s.User_Record);
-            return View(salary_Records.ToList());
+
+            if (!String.IsNullOrEmpty(SearchBulan) && !String.IsNullOrEmpty(SearchTahun))
+            {
+                var salary_Records = db.Salary_Records.Include(s => s.User_Record).Where(s => s.sal_month == SearchBulan).Where(s => s.sal_year == SearchTahun);
+                return View(salary_Records.ToList());
+
+            }
+            else
+            {
+                var salary_Records = db.Salary_Records.Include(s => s.User_Record);
+                return View(salary_Records.ToList());
+            }
+               
         }
 
         // GET: Salary_Record/Details/5

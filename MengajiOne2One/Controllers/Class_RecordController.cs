@@ -17,23 +17,49 @@ namespace MengajiOne2One.Controllers
         private motodbEntities db = new motodbEntities();
 
         // GET: Class_Record
-        public ActionResult Index()
+        public ActionResult Index(string SearchBulan, string SearchTahun)
         {
-            if (@User.IsInRole("Guru"))
+            if (!String.IsNullOrEmpty(SearchBulan) && !String.IsNullOrEmpty(SearchTahun))
             {
-                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_teacherID == @User.Identity.Name);
-                return View(class_Records.ToList());
-            }
-            else if (@User.IsInRole("Admin"))
-            {
-                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record);
-                return View(class_Records.ToList());
+                int bul = Int32.Parse(SearchBulan);
+                int tah = Int32.Parse(SearchTahun);
+
+                if (@User.IsInRole("Guru"))
+                {
+                    var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_teacherID == @User.Identity.Name).Where(c => c.c_date.Month== bul).Where(c => c.c_date.Year == tah);
+                    return View(class_Records.ToList());
+                }
+                else if (@User.IsInRole("Admin"))
+                {
+                    var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_date.Month == bul).Where(c => c.c_date.Year == tah);
+                    return View(class_Records.ToList());
+                }
+                else
+                {
+                    var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_studentID == @User.Identity.Name).Where(c => c.c_date.Month == bul).Where(c => c.c_date.Year == tah);
+                    return View(class_Records.ToList());
+                }
             }
             else
             {
-                var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_studentID == @User.Identity.Name);
-                return View(class_Records.ToList());
+                if (@User.IsInRole("Guru"))
+                {
+                    var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_teacherID == @User.Identity.Name);
+                    return View(class_Records.ToList());
+                }
+                else if (@User.IsInRole("Admin"))
+                {
+                    var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record);
+                    return View(class_Records.ToList());
+                }
+                else
+                {
+                    var class_Records = db.Class_Records.Include(c => c.Student_Record).Include(c => c.User_Record).Where(c => c.c_studentID == @User.Identity.Name);
+                    return View(class_Records.ToList());
+                }
+
             }
+            
             
         }
 
