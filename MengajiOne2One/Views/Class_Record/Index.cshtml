@@ -124,7 +124,7 @@
                                     @Html.ActionLink("Tamatkan Kelas", "EditEndClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
                                 }
 
-                                @if (item.c_timeEnd != null && Roles.GetRolesForUser().Length == 0 && item.c_status == "BELUM DISAHKAN")
+                                @if (item.c_timeEnd != null && !User.IsInRole("Guru") && item.c_status == "BELUM DISAHKAN")
                                 {
                                     @Html.ActionLink("Sahkan", "EditVerifyClass", new { id = item.c_id }, new { @class = "btn btn-info btnStyle", onclick = "return confirm('Adakah anda pasti?');" })
                                 }

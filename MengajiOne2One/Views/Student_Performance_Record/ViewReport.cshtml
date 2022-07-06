@@ -44,6 +44,7 @@
             <div style="text-align:center">
                 <address>
                     Bulan: @Html.DisplayFor(model => model.Item1.per_month)<br>
+                    Tahun: @Html.DisplayFor(model => model.Item1.per_year)<br>
                     Nama Pelajar: @Html.DisplayFor(model => model.Item1.Student_Record.s_name)<br>
                     Kod : @Html.DisplayFor(model => model.Item1.Student_Record.s_id)<br>
                     Guru:
@@ -68,17 +69,17 @@
                             var total = 0;}
                         @foreach (var item in Model.Item2)
                         {
-                            <tr>
+                        <tr>
 
-                                <td>
-                                    @{i++;}
-                                    @i
-                                </td>
-                                <td>@item.c_date.ToShortDateString()</td>
-                                <td>@item.c_timeStart</td>
-                                <td>@item.c_timeEnd</td>
-                                <td>@item.c_duration</td>
-                            </tr>
+                            <td>
+                                @{i++;}
+                                @i
+                            </td>
+                            <td>@item.c_date.ToShortDateString()</td>
+                            <td>@item.c_timeStart</td>
+                            <td>@item.c_timeEnd</td>
+                            <td>@item.c_duration</td>
+                        </tr>
                             total = (int)(total + @item.c_duration);
                         }
                         <tr>

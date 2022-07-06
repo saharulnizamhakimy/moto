@@ -5,9 +5,13 @@
 }
 
 <h2>Senarai Pelajar</h2>
-<p>
-    @Html.ActionLink("Tambah Pelajar", "Create", null, new { @class = "btn btn-success btnStyle" })
-</p>
+@if(User.IsInRole("Admin"))
+{
+                <p>
+                    @Html.ActionLink("Tambah Pelajar", "Create", null, new { @class = "btn btn-success btnStyle" })
+                </p>
+ }
+
 @if (TempData["AlertMessage"] != null)
 {
     <div class="alert alert-success">
@@ -76,9 +80,13 @@
                         @Html.DisplayFor(modelItem => item.User_Record.u_name)
                     </td>
                     <td>
-                        @Html.ActionLink("Kemaskini", "Edit", new { id = item.s_id }, new { @class = "btn btn-warning btnStyle" })
-                        @Html.ActionLink("Butiran", "Details", new { id = item.s_id }, new { @class = "btn btn-info btnStyle" })
-                        @Html.ActionLink("Padam", "Delete", new { id = item.s_id }, new { @class = "btn btn-danger btnStyle" })
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Kemaskini", "Edit", new { id = item.s_id }, new { @class = "btn btn-warning btnStyle" })
+                            @Html.ActionLink("Butiran", "Details", new { id = item.s_id }, new { @class = "btn btn-info btnStyle" })
+                            @Html.ActionLink("Padam", "Delete", new { id = item.s_id }, new { @class = "btn btn-danger btnStyle" })
+                        }
+
                     </td>
                 </tr>
             }
